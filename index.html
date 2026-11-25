@@ -1,871 +1,2185 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-acento="petroleo" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rafael Balchuna — Dados, BI, Automação &amp; Engenharia Web</title>
-  <meta name="description" content="Portfólio técnico de Rafael Balchuna: Análise de Dados, SQL, Python, Power BI, Automação de Processos, APIs REST e Next.js/TypeScript. 959 testes automatizados." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <title>Rafael Balchuna · Dados, BI, automação e engenharia web</title>
+  <meta name="description" content="Portfólio técnico de Rafael Balchuna: análise de dados, SQL, Python, Power BI, automação de processos, APIs REST e Next.js/TypeScript. 959 testes automatizados." />
+  <link rel="stylesheet" href="marca/tokens.css" />
   <style>
-    :root {
-      --bg: #090e18;
-      --bg-elev: #0f172a;
-      --card: #111c32;
-      --card-hover: #162340;
-      --border: #1e2d4a;
-      --border-strong: #2b4168;
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-      --soft: #cbd5e1;
-      --accent: #38bdf8;
-      --accent-dim: rgba(56, 189, 248, 0.12);
-      --green: #34d399;
-      --green-dim: rgba(52, 211, 153, 0.12);
-      --amber: #fbbf24;
-      --amber-dim: rgba(251, 191, 36, 0.12);
-      --indigo: #818cf8;
-      --indigo-dim: rgba(129, 140, 248, 0.14);
-      --radius: 14px;
-      --max: 1120px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    [hidden] { display: none !important; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at 15% -10%, rgba(56, 189, 248, 0.10), transparent 42%),
-                  radial-gradient(circle at 85% 0%, rgba(129, 140, 248, 0.08), transparent 36%),
-                  var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      font-family: var(--fonte);
+      font-size: var(--t-corpo);
+      font-weight: var(--t-corpo-peso);
+      line-height: var(--t-corpo-altura);
+      background: var(--canvas);
+      color: var(--ink);
       -webkit-font-smoothing: antialiased;
     }
 
-    a { color: inherit; text-decoration: none; }
-    code, .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
-
-    .container { max-width: var(--max); margin: 0 auto; padding: 0 22px; }
-
-    /* Top Nav */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      backdrop-filter: blur(12px);
-      background: rgba(9, 14, 24, 0.82);
-      border-bottom: 1px solid rgba(30, 45, 74, 0.7);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 64px;
-      gap: 16px;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      font-size: 0.98rem;
-      letter-spacing: -0.01em;
-    }
-    .brand-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--green));
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.55);
-    }
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-    .nav-links a:hover { color: var(--text); }
-    .lang-toggle {
-      display: inline-flex;
-      background: var(--bg-elev);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 3px;
-      gap: 2px;
-    }
-    .lang-btn {
-      border: none;
-      background: transparent;
-      color: var(--muted);
-      font-family: inherit;
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 5px 11px;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: all 0.16s ease;
-    }
-    .lang-btn.active {
-      background: var(--accent);
-      color: #06101f;
-    }
-
-    /* Hero */
-    .hero { padding: 64px 0 42px; }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--green);
-      background: var(--green-dim);
-      border: 1px solid rgba(52, 211, 153, 0.25);
-      padding: 5px 12px;
-      border-radius: 999px;
-      margin-bottom: 20px;
-    }
-    h1 {
-      font-size: clamp(2rem, 4.4vw, 3.15rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.12;
-      max-width: 820px;
-      margin-bottom: 18px;
-    }
-    h1 span {
-      background: linear-gradient(90deg, #38bdf8, #818cf8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-sub {
-      font-size: 1.05rem;
-      color: var(--soft);
-      max-width: 740px;
-      margin-bottom: 28px;
-    }
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 42px;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      padding: 11px 18px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--bg-elev);
-      color: var(--text);
-      transition: all 0.16s ease;
-    }
-    .btn:hover {
-      border-color: var(--border-strong);
-      background: var(--card-hover);
-      transform: translateY(-1px);
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #0ea5e9, #2563eb);
-      border-color: transparent;
-      color: #ffffff;
-    }
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #38bdf8, #3b82f6);
-    }
-
-    /* Proof Strip */
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-    .metric-card {
-      background: rgba(17, 28, 50, 0.72);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px 18px 16px;
-    }
-    .metric-val {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1.2;
-      margin-bottom: 4px;
-    }
-    .metric-label {
-      font-size: 0.83rem;
-      color: var(--muted);
-      line-height: 1.4;
-    }
-
-    /* Sections */
-    section { padding: 48px 0; }
-    .sec-head {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .sec-title {
-      font-size: 1.55rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .sec-sub {
-      color: var(--muted);
-      font-size: 0.93rem;
-      margin-top: 4px;
-    }
-
-    /* Filters */
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .filter-btn {
-      background: var(--bg-elev);
-      color: var(--muted);
-      border: 1px solid var(--border);
-      padding: 7px 14px;
-      border-radius: 999px;
-      font-family: inherit;
-      font-size: 0.83rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-    .filter-btn:hover { color: var(--text); border-color: var(--border-strong); }
-    .filter-btn.active {
-      background: var(--accent-dim);
-      color: var(--accent);
-      border-color: rgba(56, 189, 248, 0.45);
-    }
-
-    /* Project Grid */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+    a { color: var(--acento-ink); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code, .mono { font-family: var(--fonte-mono); }
+    .num { font-variant-numeric: tabular-nums; }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.18s ease, transform 0.18s ease;
-    }
-    .card:hover {
-      border-color: var(--border-strong);
-      transform: translateY(-2px);
-    }
-    .card.hidden { display: none; }
-    .card-media {
-      aspect-ratio: 16 / 9;
-      background: #0b1222;
-      border-bottom: 1px solid var(--border);
-      overflow: hidden;
-      position: relative;
-    }
-    .card-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
-    }
-    .card-media-placeholder {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 24px 26px;
-      background: linear-gradient(135deg, rgba(14, 165, 233, 0.10), rgba(15, 23, 42, 0.95) 60%, rgba(129, 140, 248, 0.10));
-      height: 100%;
-    }
-    .arch-flow {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--accent);
-      background: rgba(9, 14, 24, 0.72);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px;
-      line-height: 1.65;
-    }
-    .card-body {
-      padding: 20px 22px 22px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      gap: 12px;
-    }
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-    .badge {
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 3px 9px;
-      border-radius: 999px;
-      letter-spacing: 0.01em;
-    }
-    .b-blue { background: var(--accent-dim); color: var(--accent); }
-    .b-green { background: var(--green-dim); color: var(--green); }
-    .b-amber { background: var(--amber-dim); color: var(--amber); }
-    .b-indigo { background: var(--indigo-dim); color: var(--indigo); }
-
-    .card h3 {
-      font-size: 1.12rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      line-height: 1.3;
-    }
-    .card p {
-      font-size: 0.9rem;
-      color: var(--soft);
-      flex: 1;
-    }
-    .card-proof {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--muted);
-      background: rgba(9, 14, 24, 0.55);
-      border: 1px solid rgba(30, 45, 74, 0.8);
-      border-radius: 8px;
-      padding: 9px 11px;
-    }
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .tag {
-      font-size: 0.74rem;
-      color: var(--muted);
-      background: rgba(148, 163, 184, 0.08);
-      border: 1px solid rgba(148, 163, 184, 0.15);
-      padding: 3px 8px;
-      border-radius: 6px;
-    }
-    .card-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding-top: 4px;
-    }
-    .link-pill {
-      font-size: 0.83rem;
-      font-weight: 600;
-      color: var(--accent);
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .link-pill:hover { text-decoration: underline; }
-    .link-muted {
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    /* Stack & About */
-    .two-col {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-    .panel {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-    }
-    .panel h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 14px;
-      color: var(--text);
-    }
-    .list-clean {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-      font-size: 0.9rem;
-      color: var(--soft);
-    }
-    .list-clean li strong { color: var(--text); }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 36px 0 48px;
-      margin-top: 24px;
-    }
-    .footer-inner {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-    }
-    .footer-note {
-      font-size: 0.84rem;
-      color: var(--muted);
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     /* Language switching */
     body.lang-pt .en { display: none !important; }
     body.lang-en .pt { display: none !important; }
 
-    @media (max-width: 900px) {
-      .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .grid, .two-col { grid-template-columns: 1fr; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--e-5);
     }
-    @media (max-width: 560px) {
+
+    /* Sticky Top Header (flat surface, zero blur/glass) */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 56px;
+      gap: var(--e-4);
+    }
+    .brand {
+      font-size: var(--t-titulo);
+      font-weight: 600;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--e-2);
+      white-space: nowrap;
+    }
+    .brand:hover { text-decoration: none; color: var(--acento-ink); }
+    .brand-mark {
+      width: 10px;
+      height: 10px;
+      border-radius: var(--raio-barra);
+      background: var(--acento);
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--e-5);
+      font-size: var(--t-corpo);
+    }
+    .nav-links a {
+      color: var(--ink-2);
+      font-weight: 400;
+      transition: color var(--mov-duracao) var(--mov-curva);
+    }
+    .nav-links a:hover { color: var(--ink); text-decoration: none; }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: var(--e-2);
+    }
+
+    /* Padrão BI Segmented Control */
+    .seg-group {
+      display: inline-flex;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--raio-controle);
+      padding: 2px;
+      gap: 2px;
+    }
+    .seg-btn {
+      border: none;
+      background: transparent;
+      color: var(--ink-2);
+      font-family: inherit;
+      font-size: var(--t-rotulo);
+      font-weight: 400;
+      line-height: var(--t-rotulo-altura);
+      height: 28px;
+      padding: 0 10px;
+      border-radius: var(--raio-barra);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+      transition: background-color var(--mov-duracao) var(--mov-curva), color var(--mov-duracao) var(--mov-curva);
+    }
+    .seg-btn:hover {
+      background: var(--surface-2);
+      color: var(--ink);
+    }
+    .seg-btn[aria-pressed="true"],
+    .seg-btn[aria-selected="true"] {
+      background: var(--acento-wash);
+      color: var(--acento-ink);
+      font-weight: 600;
+    }
+
+    /* Buttons (flat, tonal, accessible) */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-family: inherit;
+      font-size: var(--t-corpo);
+      font-weight: 600;
+      line-height: 1;
+      height: 36px;
+      padding: 0 14px;
+      border-radius: var(--raio-controle);
+      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      color: var(--ink);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color var(--mov-duracao) var(--mov-curva), border-color var(--mov-duracao) var(--mov-curva), color var(--mov-duracao) var(--mov-curva);
+    }
+    .btn:hover {
+      background: var(--surface-2);
+      border-color: var(--ink-3);
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--acento-ink);
+      border-color: var(--acento-ink);
+      color: var(--surface);
+    }
+    .btn-primary:hover {
+      background: color-mix(in srgb, var(--acento-ink) 86%, var(--ink));
+      border-color: color-mix(in srgb, var(--acento-ink) 86%, var(--ink));
+      color: var(--surface);
+    }
+    .btn-sm {
+      height: 30px;
+      padding: 0 11px;
+      font-size: var(--t-rotulo);
+    }
+    .btn-copied {
+      background: var(--acento-wash);
+      border-color: var(--acento-ink);
+      color: var(--acento-ink);
+    }
+
+    .icon {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      display: inline-block;
+    }
+    .icon-sm {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+      display: inline-block;
+    }
+
+    /* Hero: Editorial Asymmetric Split + Live Interactive Stage */
+    .hero {
+      padding: var(--e-6) 0 var(--e-5);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: var(--e-5);
+      align-items: start;
+    }
+    .hero-copy {
+      padding-top: var(--e-2);
+    }
+    .hero-copy h1 {
+      font-size: clamp(26px, 3vw, 34px);
+      font-weight: 600;
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+      color: var(--ink);
+      margin-bottom: var(--e-3);
+    }
+    .hero-lead {
+      font-size: var(--t-titulo);
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--ink-2);
+      max-width: 56ch;
+      margin-bottom: var(--e-4);
+    }
+    .hero-meta {
+      font-size: var(--t-rotulo);
+      color: var(--ink-3);
+      margin-bottom: var(--e-4);
+      line-height: 1.5;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--e-2);
+      margin-bottom: var(--e-5);
+    }
+
+    /* Compact Proof Strip inside Hero Left (hairline ledger, not 4 bulky boxes) */
+    .hero-facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--e-3);
+      border-top: 1px solid var(--border);
+      padding-top: var(--e-4);
+    }
+    .fact-val {
+      font-size: var(--t-kpi);
+      font-weight: 600;
+      line-height: var(--t-kpi-altura);
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .fact-label {
+      font-size: var(--t-rotulo);
+      color: var(--ink-2);
+      margin-top: 2px;
+      line-height: 1.35;
+    }
+
+    /* Interactive Flagship Stage (Viewport 1 artifact) */
+    .stage-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--raio-cartao);
+      overflow: hidden;
+    }
+    .stage-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--e-2);
+      padding: var(--e-3) var(--e-4);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+    .stage-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .stage-panel {
+      padding: var(--e-4);
+    }
+    .stage-panel[hidden] { display: none; }
+
+    .stage-media-btn {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--raio-controle);
+      overflow: hidden;
+      background: var(--canvas);
+      cursor: zoom-in;
+      position: relative;
+      aspect-ratio: 16 / 9;
+    }
+    .stage-media-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .zoom-hint {
+      position: absolute;
+      right: var(--e-2);
+      bottom: var(--e-2);
+      background: var(--surface);
+      color: var(--ink);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--raio-barra);
+      padding: 4px 8px;
+      font-size: var(--t-nota);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .stage-kpis {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--e-2);
+      margin-top: var(--e-3);
+      padding-top: var(--e-3);
+      border-top: 1px solid var(--grid);
+    }
+    .stage-kpi-val {
+      font-size: var(--t-titulo);
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .stage-kpi-lbl {
+      font-size: var(--t-nota);
+      color: var(--ink-3);
+    }
+    .stage-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--e-2);
+      margin-top: var(--e-3);
+      padding-top: var(--e-3);
+      border-top: 1px solid var(--grid);
+    }
+    .stage-caption {
+      font-size: var(--t-rotulo);
+      color: var(--ink-2);
+    }
+    .stage-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--e-3);
+      font-size: var(--t-rotulo);
+      font-weight: 600;
+    }
+    .link-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--acento-ink);
+      font-weight: 600;
+    }
+
+    /* Interactive Architecture Inspector (IDEA & MCP) */
+    .arch-box {
+      border: 1px solid var(--border);
+      border-radius: var(--raio-controle);
+      background: var(--canvas);
+      padding: var(--e-4);
+    }
+    .arch-instruction {
+      font-size: var(--t-nota);
+      color: var(--ink-3);
+      margin-bottom: var(--e-3);
+    }
+    .arch-nodes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+      gap: var(--e-2);
+      margin-bottom: var(--e-3);
+    }
+    .arch-node {
+      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      color: var(--ink);
+      border-radius: var(--raio-controle);
+      padding: 10px 10px;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+      transition: border-color var(--mov-duracao) var(--mov-curva), background-color var(--mov-duracao) var(--mov-curva);
+    }
+    .arch-node:hover {
+      background: var(--surface-2);
+      border-color: var(--ink-3);
+    }
+    .arch-node[aria-pressed="true"] {
+      background: var(--acento-wash);
+      border-color: var(--acento);
+    }
+    .arch-step {
+      display: block;
+      font-size: var(--t-nota);
+      color: var(--ink-3);
+      margin-bottom: 2px;
+    }
+    .arch-node[aria-pressed="true"] .arch-step {
+      color: var(--acento-ink);
+      font-weight: 600;
+    }
+    .arch-title {
+      display: block;
+      font-size: var(--t-rotulo);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.25;
+    }
+    .arch-detail {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--raio-controle);
+      padding: var(--e-3);
+    }
+    .arch-detail-head {
+      font-size: var(--t-rotulo);
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .arch-detail-body {
+      font-size: var(--t-rotulo);
+      color: var(--ink-2);
+      line-height: 1.45;
+    }
+
+    /* Sections */
+    .section {
+      padding: var(--e-5) 0;
+    }
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--e-3);
+      margin-bottom: var(--e-4);
+    }
+    .section-title {
+      font-size: var(--t-pagina);
+      font-weight: var(--t-pagina-peso);
+      line-height: var(--t-pagina-altura);
+      color: var(--ink);
+    }
+    .section-sub {
+      font-size: var(--t-rotulo);
+      color: var(--ink-2);
+      margin-top: 2px;
+    }
+
+    /* Interactive Verification Chart (Padrão BI Cross-Highlight!) */
+    .card-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--raio-cartao);
+      padding: var(--e-4) var(--e-5);
+    }
+    .chart-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--e-3);
+      margin-bottom: var(--e-4);
+    }
+    .chart-finding {
+      font-size: var(--t-pagina);
+      font-weight: var(--t-pagina-peso);
+      line-height: 1.25;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+    .chart-sub {
+      font-size: var(--t-rotulo);
+      color: var(--ink-2);
+      margin-top: 2px;
+    }
+    .bar-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: minmax(175px, 240px) minmax(0, 1fr) 74px;
+      align-items: center;
+      gap: var(--e-3);
+      padding: 6px var(--e-2);
+      border: 1px solid transparent;
+      border-radius: var(--raio-controle);
+      background: transparent;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background-color var(--mov-duracao) var(--mov-curva);
+    }
+    .bar-row:hover {
+      background: var(--surface-2);
+    }
+    .bar-row[aria-pressed="true"] {
+      background: var(--acento-wash);
+    }
+    .bar-name {
+      font-size: var(--t-rotulo);
+      color: var(--ink);
+      font-weight: 400;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .bar-row[aria-pressed="true"] .bar-name {
+      font-weight: 600;
+      color: var(--acento-ink);
+    }
+    .bar-track {
+      height: 18px;
+      background: var(--surface-2);
+      border-radius: var(--raio-barra);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .bar-fill {
+      height: 100%;
+      background: var(--acento);
+      border-radius: 0 var(--raio-barra) var(--raio-barra) 0;
+      transition: background-color var(--mov-duracao) var(--mov-curva), width 240ms var(--mov-curva);
+    }
+    .bar-list.has-selection .bar-row:not([aria-pressed="true"]) .bar-fill {
+      background: var(--mark-muted);
+    }
+    .bar-val {
+      font-size: var(--t-rotulo);
+      font-weight: 600;
+      color: var(--ink);
+      text-align: right;
+    }
+    .chart-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--e-2);
+      margin-top: var(--e-3);
+      padding-top: var(--e-3);
+      border-top: 1px solid var(--grid);
+      font-size: var(--t-nota);
+      color: var(--ink-3);
+    }
+
+    /* Filter & Search Bar */
+    .filter-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--e-3);
+      margin-bottom: var(--e-4);
+    }
+    .search-wrap {
+      display: flex;
+      align-items: center;
+      gap: var(--e-2);
+      flex: 1;
+      max-width: 340px;
+      min-width: 220px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--raio-controle);
+      padding: 0 10px;
+      height: 34px;
+    }
+    .search-wrap:focus-within {
+      border-color: var(--acento-ink);
+    }
+    .search-input {
+      border: none;
+      background: transparent;
+      color: var(--ink);
+      font-family: inherit;
+      font-size: var(--t-rotulo);
+      width: 100%;
+      outline: none;
+    }
+    .search-input::placeholder { color: var(--ink-3); }
+    .result-count {
+      font-size: var(--t-rotulo);
+      color: var(--ink-3);
+      white-space: nowrap;
+    }
+
+    /* Flagship Case Studies (Full-width horizontal rows) */
+    .flagship-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--e-4);
+      margin-bottom: var(--e-5);
+    }
+    .flagship-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--raio-cartao);
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      overflow: hidden;
+      scroll-margin-top: 76px;
+      transition: border-color var(--mov-duracao) var(--mov-curva);
+    }
+    .flagship-card:hover {
+      border-color: var(--border-strong);
+    }
+    .flagship-card.is-highlighted,
+    .project-card.is-highlighted {
+      border-color: var(--acento);
+    }
+    .flagship-card.hidden,
+    .project-card.hidden {
+      display: none;
+    }
+
+    .flagship-media {
+      background: var(--surface-2);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      min-height: 240px;
+    }
+    .flagship-media-btn {
+      width: 100%;
+      height: 100%;
+      border: none;
+      padding: 0;
+      background: transparent;
+      cursor: zoom-in;
+      display: block;
+      position: relative;
+    }
+    .flagship-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    /* Clean Geometric SVG Architecture Preview for Private Systems */
+    .svg-diagram-wrap {
+      padding: var(--e-4);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--e-3);
+    }
+    .svg-diagram {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card-body {
+      padding: var(--e-4) var(--e-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--e-3);
+    }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--e-2);
+      font-size: var(--t-nota);
+      color: var(--ink-2);
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: var(--raio-barra);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--ink-2);
+      font-size: var(--t-rotulo);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    .chip-accent {
+      background: var(--acento-wash);
+      border-color: transparent;
+      color: var(--acento-ink);
+      font-weight: 600;
+    }
+    .card-title {
+      font-size: var(--t-pagina);
+      font-weight: var(--t-pagina-peso);
+      line-height: 1.25;
+      color: var(--ink);
+    }
+    .card-desc {
+      font-size: var(--t-corpo);
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+    .proof-box {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--raio-controle);
+      padding: 10px 12px;
+      font-size: var(--t-rotulo);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      font-size: var(--t-rotulo);
+      color: var(--ink-2);
+      background: var(--canvas);
+      border: 1px solid var(--border);
+      padding: 4px 9px;
+      border-radius: var(--raio-barra);
+      line-height: 1.2;
+    }
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--e-4);
+      margin-top: auto;
+      padding-top: var(--e-1);
+      font-size: var(--t-rotulo);
+    }
+    .muted-note {
+      font-size: var(--t-rotulo);
+      color: var(--ink-3);
+    }
+
+    /* Secondary Projects Grid (2 columns, compact) */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--e-4);
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--raio-cartao);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      scroll-margin-top: 76px;
+      transition: border-color var(--mov-duracao) var(--mov-curva);
+    }
+    .project-card:hover {
+      border-color: var(--border-strong);
+    }
+    .project-thumb-btn {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      padding: 0;
+      background: var(--surface-2);
+      cursor: zoom-in;
+      overflow: hidden;
+      position: relative;
+    }
+    .project-thumb-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .project-card .card-body {
+      padding: var(--e-4);
+      flex: 1;
+    }
+    .project-card .card-title {
+      font-size: var(--t-titulo);
+    }
+
+    /* Empty state */
+    .empty-state {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--raio-cartao);
+      padding: var(--e-6) var(--e-4);
+      text-align: center;
+      color: var(--ink-2);
+    }
+    .empty-state[hidden] { display: none; }
+    .empty-state p { margin-bottom: var(--e-3); }
+
+    /* Stack & Education Ledger (2 columns) */
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--e-4);
+      align-items: start;
+    }
+    .ledger-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--raio-cartao);
+      padding: var(--e-4) var(--e-5);
+    }
+    .ledger-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--e-2);
+      margin-bottom: var(--e-3);
+      padding-bottom: var(--e-3);
+      border-bottom: 1px solid var(--border-strong);
+    }
+    .ledger-title {
+      font-size: var(--t-pagina);
+      font-weight: var(--t-pagina-peso);
+      line-height: 1.25;
+      color: var(--ink);
+    }
+    .ledger-list {
+      list-style: none;
+    }
+    .ledger-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--grid);
+      font-size: var(--t-corpo);
+      color: var(--ink-2);
+    }
+    .ledger-list li:last-child { border-bottom: none; padding-bottom: 0; }
+    .ledger-list li strong {
+      color: var(--ink);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .stack-pane[hidden] { display: none; }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: var(--e-5) 0 var(--e-6);
+      margin-top: var(--e-5);
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--e-4);
+    }
+    .footer-sig {
+      font-size: var(--t-titulo);
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: var(--e-1);
+    }
+    .footer-note {
+      font-size: var(--t-rotulo);
+      color: var(--ink-2);
+      max-width: 66ch;
+      line-height: 1.5;
+    }
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--e-2);
+    }
+
+    /* Native Lightbox Dialog (only place with floating shadow) */
+    dialog.lightbox {
+      margin: auto;
+      padding: 0;
+      max-width: min(1040px, 94vw);
+      width: 100%;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--raio-cartao);
+      background: var(--surface);
+      color: var(--ink);
+      box-shadow: var(--sombra-flutuante);
+      overflow: hidden;
+    }
+    dialog.lightbox::backdrop {
+      background: color-mix(in srgb, var(--ink) 55%, transparent);
+    }
+    .lightbox-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--e-3);
+      padding: var(--e-3) var(--e-4);
+      border-bottom: 1px solid var(--border);
+    }
+    .lightbox-title {
+      font-size: var(--t-corpo);
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .lightbox-img-wrap {
+      background: var(--canvas);
+      max-height: 76vh;
+      overflow: auto;
+    }
+    .lightbox-img-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 960px) {
+      .hero-grid,
+      .flagship-card,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+      .flagship-media {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 720px) {
       .nav-links { display: none; }
-      .metrics { grid-template-columns: 1fr; }
-      .hero { padding-top: 40px; }
+      .container { padding: 0 var(--e-4); }
+      .hero-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .stage-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .bar-row {
+        grid-template-columns: minmax(120px, 145px) minmax(0, 1fr) 56px;
+        gap: var(--e-2);
+      }
+      .card-body,
+      .card-panel,
+      .ledger-panel {
+        padding: var(--e-4);
+      }
+    }
+    @media (max-width: 440px) {
+      .hero-facts { grid-template-columns: 1fr; gap: var(--e-2); }
+      .nav-inner { min-height: 52px; }
+      .seg-btn { padding: 0 8px; }
     }
   </style>
 </head>
 <body class="lang-pt">
-  <header>
+  <header class="site-header">
     <div class="container nav-inner">
       <a href="#" class="brand">
-        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-mark" aria-hidden="true"></span>
         <span>Rafael Balchuna</span>
       </a>
-      <div class="nav-right">
-        <nav class="nav-links" aria-label="Navegação principal">
-          <a href="#projetos"><span class="pt">Projetos</span><span class="en">Projects</span></a>
-          <a href="#stack"><span class="pt">Stack &amp; Formação</span><span class="en">Stack &amp; Education</span></a>
-          <a href="#contato"><span class="pt">Contato</span><span class="en">Contact</span></a>
-        </nav>
-        <div class="lang-toggle" role="group" aria-label="Idioma / Language">
-          <button type="button" class="lang-btn active" data-lang="pt">PT</button>
-          <button type="button" class="lang-btn" data-lang="en">EN</button>
+
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#projetos"><span class="pt">Projetos</span><span class="en">Projects</span></a>
+        <a href="#verificacao"><span class="pt">Testes e auditoria</span><span class="en">Tests and audit</span></a>
+        <a href="#stack"><span class="pt">Stack e formação</span><span class="en">Stack and education</span></a>
+        <a href="#contato"><span class="pt">Contato</span><span class="en">Contact</span></a>
+      </nav>
+
+      <div class="nav-controls">
+        <div class="seg-group" role="group" aria-label="Tema visual">
+          <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="true">
+            <span class="pt">Claro</span><span class="en">Light</span>
+          </button>
+          <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="false">
+            <span class="pt">Escuro</span><span class="en">Dark</span>
+          </button>
+        </div>
+        <div class="seg-group" role="group" aria-label="Idioma">
+          <button type="button" class="seg-btn" data-lang="pt" aria-pressed="true">PT</button>
+          <button type="button" class="seg-btn" data-lang="en" aria-pressed="false">EN</button>
         </div>
       </div>
     </div>
   </header>
 
   <main>
+    <!-- HERO: Asymmetric Editorial Split + Interactive Flagship Stage -->
     <section class="hero">
-      <div class="container">
-        <div class="eyebrow">
-          <span class="pt">São Paulo/SP (UTC-3) · Disponível para 100% Remoto (BR / LatAm / Global)</span>
-          <span class="en">São Paulo, Brazil (UTC-3) · Open to 100% Remote Worldwide / LatAm</span>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1 class="pt">Dados, BI e automação auditados por código</h1>
+          <h1 class="en">Data, BI and automation verified by code</h1>
+
+          <p class="hero-lead pt">
+            Analista de dados, Power BI e desenvolvedor Python focado em SQL, pipelines idempotentes, dashboards conferidos contra gabarito SQL e automação documental em produção.
+          </p>
+          <p class="hero-lead en">
+            Junior Data Analyst, Power BI and Python Automation Developer focused on SQL, idempotent pipelines, SQL-verified BI dashboards, and production document automation.
+          </p>
+
+          <p class="hero-meta pt">
+            São Paulo, SP · UTC-3 · Disponível para 100% remoto (BR, LatAm ou global · CLT, PJ, Contractor USD/EUR ou EOR) · Inglês fluente escrito e falado (nível C1, percentil 97)
+          </p>
+          <p class="hero-meta en">
+            São Paulo, Brazil · UTC-3 (US EST/CST aligned) · Available for 100% remote roles (LatAm or worldwide · Contractor USD/EUR or EOR) · Fluent written and spoken English (C1 level, 97th percentile)
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projetos">
+              <span class="pt">Explorar projetos</span><span class="en">Explore projects</span>
+            </a>
+            <a class="btn" href="https://github.com/Balchuna" target="_blank" rel="noopener">
+              <span>GitHub</span>
+              <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 11L11 5M6.5 5H11V9.5"/></svg>
+            </a>
+            <a class="btn" href="https://www.linkedin.com/in/rafael-balchuna" target="_blank" rel="noopener">
+              <span>LinkedIn</span>
+              <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 11L11 5M6.5 5H11V9.5"/></svg>
+            </a>
+            <button type="button" class="btn" data-copy-email>
+              <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="5" width="8" height="9" rx="1.5"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11"/></svg>
+              <span class="pt copy-label">Copiar e-mail</span>
+              <span class="en copy-label">Copy email</span>
+            </button>
+          </div>
+
+          <div class="hero-facts">
+            <div>
+              <div class="fact-val num">959</div>
+              <div class="fact-label pt">testes automatizados (658 CI públicos e 301 cliente)</div>
+              <div class="fact-label en">automated tests (658 public CI and 301 client)</div>
+            </div>
+            <div>
+              <div class="fact-val num">107</div>
+              <div class="fact-label pt">medidas DAX reconciliadas com gabarito SQL</div>
+              <div class="fact-label en">DAX measures reconciled against SQL keys</div>
+            </div>
+            <div>
+              <div class="fact-val num">90% · p97</div>
+              <div class="fact-label pt">inglês escrito e falado · português nativo</div>
+              <div class="fact-label en">written and spoken English · native PT-BR</div>
+            </div>
+          </div>
         </div>
 
-        <h1 class="pt">Dados, BI e Automação com <span>qualidade auditada por código</span>.</h1>
-        <h1 class="en">Data, BI &amp; Automation backed by <span>code-verified data quality</span>.</h1>
-
-        <p class="hero-sub pt">
-          Sou Rafael Balchuna — Analista de Dados e Desenvolvedor Júnior focado em <strong>SQL, Python, Power BI, APIs REST e Next.js/TypeScript</strong>. Construo pipelines idempotentes, dashboards conferidos contra gabarito SQL e automações documentais em produção, com <strong>959 testes automatizados</strong> no portfólio.
-        </p>
-        <p class="hero-sub en">
-          I'm Rafael Balchuna — a Junior Data Analyst &amp; Python Automation Developer focused on <strong>SQL, Python, Power BI, REST APIs, and Next.js/TypeScript</strong>. I build idempotent pipelines, SQL-verified BI dashboards, and production document automation backed by <strong>959 automated tests</strong>.
-        </p>
-
-        <div class="cta-row">
-          <a class="btn btn-primary" href="https://github.com/Balchuna" target="_blank" rel="noopener">GitHub · @Balchuna</a>
-          <a class="btn" href="https://www.linkedin.com/in/rafael-balchuna" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn" href="mailto:balchunarafael@gmail.com">balchunarafael@gmail.com</a>
-          <a class="btn" href="https://wa.me/5511966265880" target="_blank" rel="noopener">WhatsApp</a>
-        </div>
-
-        <div class="metrics">
-          <div class="metric-card">
-            <div class="metric-val">959</div>
-            <div class="metric-label pt">Testes automatizados (658 públicos com CI + 301 em sistema de cliente real)</div>
-            <div class="metric-label en">Automated tests (658 public with CI + 301 on a real client system)</div>
+        <!-- INTERACTIVE STAGE: 3 Flagship Projects Live in Viewport 1 -->
+        <div class="stage-card" aria-label="Vitrine interativa dos três projetos principais">
+          <div class="stage-head">
+            <div class="seg-group stage-tabs" role="tablist" aria-label="Selecionar projeto em destaque">
+              <button type="button" class="seg-btn" role="tab" id="tab-olist" aria-controls="panel-olist" aria-selected="true" data-stage-tab="olist">
+                <span class="pt">E-Commerce e Macro BI</span><span class="en">E-Commerce and Macro BI</span>
+              </button>
+              <button type="button" class="seg-btn" role="tab" id="tab-idea" aria-controls="panel-idea" aria-selected="false" data-stage-tab="idea">
+                <span class="pt">IDEA Central (SST)</span><span class="en">IDEA Central (OHS)</span>
+              </button>
+              <button type="button" class="seg-btn" role="tab" id="tab-mcp" aria-controls="panel-mcp" aria-selected="false" data-stage-tab="mcp">
+                <span class="pt">Servidor MCP e ponte C#</span><span class="en">MCP server and C# bridge</span>
+              </button>
+            </div>
           </div>
-          <div class="metric-card">
-            <div class="metric-val">100 / 88</div>
-            <div class="metric-label pt">Docs por pessoa em 88 emissões concluídas (1 erro, verificado por SQL)</div>
-            <div class="metric-label en">Per-worker docs across 88 completed runs (1 error, SQL-verified)</div>
+
+          <!-- Stage Panel 1: Olist Live Preview -->
+          <div class="stage-panel" role="tabpanel" id="panel-olist" aria-labelledby="tab-olist" data-stage-panel="olist">
+            <button type="button" class="stage-media-btn" data-lightbox-src="assets/img/painel-ecommerce.png" data-lightbox-title-pt="Painel E-Commerce e Macroeconomia Brasil · Olist + BCB e IBGE" data-lightbox-title-en="Brazilian E-Commerce and Macroeconomics Dashboard · Olist + BCB and IBGE">
+              <img src="assets/img/painel-ecommerce.png" alt="Captura do Painel E-Commerce e Macroeconomia Brasil com indicadores de GMV real e entregas no prazo" />
+              <span class="zoom-hint">
+                <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14M7 5v4M5 7h4"/></svg>
+                <span class="pt">Ampliar</span><span class="en">Expand</span>
+              </span>
+            </button>
+
+            <div class="stage-kpis">
+              <div>
+                <div class="stage-kpi-val num"><span class="pt">R$&nbsp;15,96&nbsp;mi</span><span class="en">R$&nbsp;15.96M</span></div>
+                <div class="stage-kpi-lbl pt">GMV real (+135,9% a/a)</div>
+                <div class="stage-kpi-lbl en">Real GMV (+135.9% YoY)</div>
+              </div>
+              <div>
+                <div class="stage-kpi-val num"><span class="pt">93,23%</span><span class="en">93.23%</span></div>
+                <div class="stage-kpi-lbl pt">entregas no prazo</div>
+                <div class="stage-kpi-lbl en">on-time delivery SLA</div>
+              </div>
+              <div>
+                <div class="stage-kpi-val num"><span class="pt">99.441</span><span class="en">99,441</span></div>
+                <div class="stage-kpi-lbl pt">pedidos Olist auditados</div>
+                <div class="stage-kpi-lbl en">real Olist orders audited</div>
+              </div>
+              <div>
+                <div class="stage-kpi-val num">88</div>
+                <div class="stage-kpi-lbl pt">testes SQL, DAX e web</div>
+                <div class="stage-kpi-lbl en">SQL, DAX and web tests</div>
+              </div>
+            </div>
+
+            <div class="stage-foot">
+              <span class="stage-caption pt">Power BI PBIP, 11 tabelas estrela, APIs BCB e IBGE</span>
+              <span class="stage-caption en">Power BI PBIP, 11-table star schema, BCB and IBGE APIs</span>
+              <div class="stage-links">
+                <a class="link-inline" href="https://balchuna.github.io/painel-ecommerce-macro-br/" target="_blank" rel="noopener">
+                  <span class="pt">Abrir painel ao vivo</span><span class="en">Open live dashboard</span>
+                  <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 11L11 5M6.5 5H11V9.5"/></svg>
+                </a>
+                <a class="link-inline" href="https://github.com/Balchuna/painel-ecommerce-macro-br" target="_blank" rel="noopener">
+                  <span>GitHub</span>
+                  <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 11L11 5M6.5 5H11V9.5"/></svg>
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="metric-card">
-            <div class="metric-val">1.478</div>
-            <div class="metric-label pt">Vagas ativas coletadas automaticamente em 16/11 (91 de dados · cron semanal)</div>
-            <div class="metric-label en">Active roles scraped automatically on Nov 16 (91 data · weekly cron)</div>
+
+          <!-- Stage Panel 2: Interactive IDEA Central Architecture Inspector -->
+          <div class="stage-panel" role="tabpanel" id="panel-idea" aria-labelledby="tab-idea" data-stage-panel="idea" hidden>
+            <div class="arch-box">
+              <p class="arch-instruction pt">Clique em qualquer etapa da arquitetura para inspecionar as garantias implementadas em produção (cliente real, código privado por LGPD).</p>
+              <p class="arch-instruction en">Click any pipeline stage to inspect production guarantees (commercial client, private repository due to employee PII/LGPD).</p>
+
+              <div class="arch-nodes" role="group" aria-label="Etapas da arquitetura IDEA Central">
+                <button type="button" class="arch-node" data-idea-step="0" aria-pressed="true">
+                  <span class="arch-step num">Etapa 1</span>
+                  <span class="arch-title pt">Planilhas RH</span>
+                  <span class="arch-title en">HR spreadsheets</span>
+                </button>
+                <button type="button" class="arch-node" data-idea-step="1" aria-pressed="false">
+                  <span class="arch-step num">Etapa 2</span>
+                  <span class="arch-title pt">Validação 12/172</span>
+                  <span class="arch-title en">12/172 blocked</span>
+                </button>
+                <button type="button" class="arch-node" data-idea-step="2" aria-pressed="false">
+                  <span class="arch-step num">Etapa 3</span>
+                  <span class="arch-title pt">Banco 10 tabelas</span>
+                  <span class="arch-title en">10-table DB</span>
+                </button>
+                <button type="button" class="arch-node" data-idea-step="3" aria-pressed="false">
+                  <span class="arch-step num">Etapa 4</span>
+                  <span class="arch-title pt">Bot Telegram</span>
+                  <span class="arch-title en">Telegram bot</span>
+                </button>
+                <button type="button" class="arch-node" data-idea-step="4" aria-pressed="false">
+                  <span class="arch-step num">Etapa 5</span>
+                  <span class="arch-title pt">PDF e SHA-256</span>
+                  <span class="arch-title en">PDF and SHA-256</span>
+                </button>
+              </div>
+
+              <div class="arch-detail" aria-live="polite">
+                <div class="arch-detail-head" id="idea-detail-head"></div>
+                <div class="arch-detail-body" id="idea-detail-body"></div>
+              </div>
+            </div>
+
+            <div class="stage-foot">
+              <span class="stage-caption pt">145 trabalhadores · 1.417 registros auditados · 301 testes pytest</span>
+              <span class="stage-caption en">145 workers · 1,417 audited records · 301 pytest tests</span>
+              <div class="stage-links">
+                <a class="link-inline" href="#idea-sst">
+                  <span class="pt">Ver case completo</span><span class="en">Read full case</span>
+                </a>
+                <a class="link-inline" href="https://github.com/Balchuna/painel-certificacoes-sst" target="_blank" rel="noopener">
+                  <span class="pt">Par público BI/SQL</span><span class="en">Public BI/SQL pair</span>
+                  <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 11L11 5M6.5 5H11V9.5"/></svg>
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="metric-card">
-            <div class="metric-val">90% · p97</div>
-            <div class="metric-label pt">Inglês fluente escrito e falado (percentil 97) · Português nativo</div>
-            <div class="metric-label en">Fluent English — written &amp; spoken (97th percentile) · Native Portuguese</div>
+
+          <!-- Stage Panel 3: Interactive MCP Bridge Inspector -->
+          <div class="stage-panel" role="tabpanel" id="panel-mcp" aria-labelledby="tab-mcp" data-stage-panel="mcp" hidden>
+            <div class="arch-box">
+              <p class="arch-instruction pt">Clique em uma camada para ver como o agente de IA controla com segurança um software desktop sem API pública.</p>
+              <p class="arch-instruction en">Click a layer to inspect how an AI agent safely drives desktop software without a public API.</p>
+
+              <div class="arch-nodes" role="group" aria-label="Camadas da ponte MCP Dungeon-Alchemist">
+                <button type="button" class="arch-node" data-mcp-step="0" aria-pressed="true">
+                  <span class="arch-step num">Camada 1</span>
+                  <span class="arch-title pt">Servidor MCP</span>
+                  <span class="arch-title en">MCP server</span>
+                </button>
+                <button type="button" class="arch-node" data-mcp-step="1" aria-pressed="false">
+                  <span class="arch-step num">Camada 2</span>
+                  <span class="arch-title pt">Motor Python</span>
+                  <span class="arch-title en">Python engine</span>
+                </button>
+                <button type="button" class="arch-node" data-mcp-step="2" aria-pressed="false">
+                  <span class="arch-step num">Camada 3</span>
+                  <span class="arch-title pt">Ponte HTTP C#</span>
+                  <span class="arch-title en">C# HTTP bridge</span>
+                </button>
+                <button type="button" class="arch-node" data-mcp-step="3" aria-pressed="false">
+                  <span class="arch-step num">Camada 4</span>
+                  <span class="arch-title pt">12 verificações</span>
+                  <span class="arch-title en">12 checks</span>
+                </button>
+              </div>
+
+              <div class="arch-detail" aria-live="polite">
+                <div class="arch-detail-head" id="mcp-detail-head"></div>
+                <div class="arch-detail-body" id="mcp-detail-body"></div>
+              </div>
+            </div>
+
+            <div class="stage-foot">
+              <span class="stage-caption pt">Plugin C# (26 comandos) · Python stdlib (2.800+ linhas) · CLI e MCP</span>
+              <span class="stage-caption en">C# plugin (26 commands) · pure-Python stdlib (2,800+ LOC) · CLI and MCP</span>
+              <div class="stage-links">
+                <a class="link-inline" href="https://drive.google.com/file/d/1XWy5Qg8_aGuIpLukzWZnooe488D5ud2G/view" target="_blank" rel="noopener">
+                  <span class="pt">Assistir demonstração (68s)</span><span class="en">Watch 68s video demo</span>
+                  <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 11L11 5M6.5 5H11V9.5"/></svg>
+                </a>
+                <a class="link-inline" href="#dungeon-alchemist-mcp">
+                  <span class="pt">Ver resumo técnico</span><span class="en">Read technical summary</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="projetos">
+    <!-- SECTION 2: Interactive Test Verification Ledger (Padrão BI Cross-Highlight!) -->
+    <section class="section" id="verificacao">
       <div class="container">
-        <div class="sec-head">
-          <div>
-            <h2 class="sec-title pt">Projetos Verificáveis &amp; Entregas Reais</h2>
-            <h2 class="sec-title en">Verifiable Projects &amp; Real Deliveries</h2>
-            <p class="sec-sub pt">Dados sintéticos e repositórios privados por LGPD são sinalizados explicitamente.</p>
-            <p class="sec-sub en">Synthetic datasets and privacy-restricted client systems are labeled transparently.</p>
+        <div class="card-panel">
+          <div class="chart-head">
+            <div>
+              <h2 class="chart-finding" id="chart-finding"></h2>
+              <p class="chart-sub pt">Quantidade de testes automatizados por projeto · clique em uma barra para destacar e ir ao projeto</p>
+              <p class="chart-sub en">Automated test count by project · click any bar to cross-highlight and jump to the project</p>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <button type="button" class="btn btn-sm" id="jump-selected-btn" hidden>
+                <span class="pt">Ir ao projeto</span><span class="en">Jump to project</span>
+              </button>
+              <button type="button" class="btn btn-sm" id="clear-bar-btn" hidden>
+                <span class="pt">Limpar seleção</span><span class="en">Clear selection</span>
+              </button>
+            </div>
           </div>
-          <div class="filters" role="group" aria-label="Filtrar projetos">
-            <button type="button" class="filter-btn active" data-filter="all"><span class="pt">Todos (9)</span><span class="en">All (9)</span></button>
-            <button type="button" class="filter-btn" data-filter="dados"><span class="pt">Dados &amp; BI</span><span class="en">Data &amp; BI</span></button>
-            <button type="button" class="filter-btn" data-filter="automacao"><span class="pt">Automação &amp; IA</span><span class="en">Automation &amp; AI</span></button>
-            <button type="button" class="filter-btn" data-filter="web"><span class="pt">Web ao Vivo</span><span class="en">Live Web</span></button>
+
+          <div class="bar-list" id="test-bar-list" role="group" aria-label="Distribuição dos 959 testes automatizados">
+            <button type="button" class="bar-row" data-bar-id="idea-sst" data-count="301" aria-pressed="false">
+              <span class="bar-name">IDEA Central (SST · privado)</span>
+              <span class="bar-track"><span class="bar-fill" style="width:100%;"></span></span>
+              <span class="bar-val num">301</span>
+            </button>
+            <button type="button" class="bar-row" data-bar-id="painel-sst" data-count="297" aria-pressed="false">
+              <span class="bar-name">Painel de Certificações SST</span>
+              <span class="bar-track"><span class="bar-fill" style="width:98.7%;"></span></span>
+              <span class="bar-val num">297</span>
+            </button>
+            <button type="button" class="bar-row" data-bar-id="eva-flights" data-count="118" aria-pressed="false">
+              <span class="bar-name">Eva Flights (Node.js / APIs)</span>
+              <span class="bar-track"><span class="bar-fill" style="width:39.2%;"></span></span>
+              <span class="bar-val num">118</span>
+            </button>
+            <button type="button" class="bar-row" data-bar-id="radar-vagas" data-count="101" aria-pressed="false">
+              <span class="bar-name">Radar de Vagas de Dados e TI</span>
+              <span class="bar-track"><span class="bar-fill" style="width:33.6%;"></span></span>
+              <span class="bar-val num">101</span>
+            </button>
+            <button type="button" class="bar-row" data-bar-id="ecommerce" data-count="88" aria-pressed="false">
+              <span class="bar-name">E-Commerce e Macro BI (Olist)</span>
+              <span class="bar-track"><span class="bar-fill" style="width:29.2%;"></span></span>
+              <span class="bar-val num">88</span>
+            </button>
+            <button type="button" class="bar-row" data-bar-id="estresse-jss" data-count="54" aria-pressed="false">
+              <span class="bar-name">Job Stress Scale (LGPD)</span>
+              <span class="bar-track"><span class="bar-fill" style="width:17.9%;"></span></span>
+              <span class="bar-val num">54</span>
+            </button>
+          </div>
+
+          <div class="chart-foot">
+            <span class="pt">Fonte: contagem verificada nas suítes pytest, node:test e Playwright (5 repositórios públicos com GitHub Actions + 1 sistema comercial)</span>
+            <span class="en">Source: verified counts across pytest, node:test, and Playwright suites (5 public GitHub Actions repos + 1 commercial system)</span>
+            <span class="num">Total: 959</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Projects (3 Full-Width Flagships + 6 Secondary Grid) -->
+    <section class="section" id="projetos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title pt">Projetos verificáveis e entregas reais</h2>
+            <h2 class="section-title en">Verifiable projects and real deliveries</h2>
+            <p class="section-sub pt">Dados sintéticos e sistemas privados por LGPD ou EULA são identificados de forma explícita.</p>
+            <p class="section-sub en">Synthetic datasets and systems restricted by LGPD or EULA are labeled explicitly.</p>
           </div>
         </div>
 
-        <div class="grid">
+        <div class="filter-toolbar">
+          <div class="seg-group" role="group" aria-label="Filtrar projetos por área">
+            <button type="button" class="seg-btn" data-filter="all" aria-pressed="true"><span class="pt">Todos (9)</span><span class="en">All (9)</span></button>
+            <button type="button" class="seg-btn" data-filter="dados" aria-pressed="false"><span class="pt">Dados e BI</span><span class="en">Data and BI</span></button>
+            <button type="button" class="seg-btn" data-filter="automacao" aria-pressed="false"><span class="pt">Automação e IA</span><span class="en">Automation and AI</span></button>
+            <button type="button" class="seg-btn" data-filter="web" aria-pressed="false"><span class="pt">Web ao vivo</span><span class="en">Live web</span></button>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+            <label class="search-wrap">
+              <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+              <span class="sr-only">Buscar projeto por tecnologia</span>
+              <input type="search" id="project-search" class="search-input" placeholder="Buscar: Power BI, SQL, MCP..." />
+            </label>
+            <span class="result-count num" id="result-count" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <!-- 3 FLAGSHIP CASE STUDIES -->
+        <div class="flagship-list" id="flagship-list">
           <!-- 1. Painel E-Commerce & Macroeconomia Brasil -->
-          <article id="ecommerce" class="card" style="scroll-margin-top: 84px;" data-cats="dados web">
-            <div class="card-media">
-              <img src="assets/img/painel-ecommerce.png" alt="Painel E-Commerce &amp; Macroeconomia Brasil — Olist + Banco Central &amp; IBGE" loading="lazy" />
+          <article id="ecommerce" class="flagship-card" data-cats="dados web" data-search="power bi pbip dax sql python pandas olist bcb ibge ipca selic e-commerce macroeconomia playwright">
+            <div class="flagship-media">
+              <button type="button" class="flagship-media-btn" data-lightbox-src="assets/img/painel-ecommerce.png" data-lightbox-title-pt="Painel E-Commerce e Macroeconomia Brasil · Olist + BCB e IBGE" data-lightbox-title-en="Brazilian E-Commerce and Macroeconomics Dashboard · Olist + BCB and IBGE">
+                <img src="assets/img/painel-ecommerce.png" alt="Painel E-Commerce e Macroeconomia Brasil com dados Olist, BCB e IBGE" loading="lazy" />
+                <span class="zoom-hint">
+                  <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14M7 5v4M5 7h4"/></svg>
+                  <span class="pt">Ampliar</span><span class="en">Expand</span>
+                </span>
+              </button>
             </div>
             <div class="card-body">
-              <div class="badges">
-                <span class="badge b-green"><span class="pt">Painel web ao vivo + PBIP</span><span class="en">Live Web + Power BI PBIP</span></span>
-                <span class="badge b-blue">88 pytest + CI</span>
-                <span class="badge b-indigo"><span class="pt">Olist 99,4k + APIs BCB/IBGE</span><span class="en">Real Olist 99.4k + BCB/IBGE APIs</span></span>
+              <div class="meta-row">
+                <span class="chip chip-accent"><span class="pt">Projeto principal 1</span><span class="en">Flagship 1</span></span>
+                <span class="chip"><span class="pt">Painel web ao vivo + PBIP</span><span class="en">Live web + Power BI PBIP</span></span>
+                <span class="chip num">88 pytest + CI</span>
+                <span class="chip"><span class="pt">Dados reais Olist + BCB/IBGE</span><span class="en">Real Olist + BCB/IBGE</span></span>
               </div>
-              <h3><span class="pt">Painel E-Commerce &amp; Macroeconomia Brasil — Olist + BCB &amp; IBGE</span><span class="en">Brazilian E-Commerce &amp; Macroeconomics Dashboard — Olist + BCB &amp; IBGE</span></h3>
-              <p class="pt">Cruza 99.441 pedidos reais da Olist (96.478 entregues) com APIs oficiais do Banco Central (SGS 433 IPCA, 432 Selic, 1 PTAX) e IBGE (população por UF) em modelo estrela (11 tabelas), 107 medidas DAX (com 17 títulos dinâmicos fx) em Power BI (PBIP no Padrão BI) e painel web bilíngue claro/escuro. Reconciliado 100% entre 6 gabaritos SQL, pandas puro, TOM/ADOMD no Power BI Desktop e Playwright.</p>
-              <p class="en">Joins 99,441 real Olist orders (96,478 delivered) with official Brazilian Central Bank (SGS 433 IPCA deflator, 432 Selic, 1 USD PTAX) and IBGE state population APIs into an 11-table star schema, 4-page Power BI PBIP (107 DAX measures incl. 17 dynamic fx titles), and bilingual light/dark web dashboard — reconciled 100% across SQL, pandas, Power BI TOM/DAX, and Playwright.</p>
-              <div class="card-proof">R$ 15,96 mi GMV real (IPCA out/18; +135,9% a/a) · SLA 93,23% · atraso derruba nota de 4,29 para 2,27 · 13 regras de qualidade</div>
-              <div class="tags">
-                <span class="tag">Power BI (PBIP)</span><span class="tag">DAX (107)</span><span class="tag">SQL</span><span class="tag">Python / pandas</span><span class="tag">APIs BCB &amp; IBGE</span>
+              <h3 class="card-title">
+                <span class="pt">Painel E-Commerce e Macroeconomia Brasil (Olist, BCB e IBGE)</span>
+                <span class="en">Brazilian E-Commerce and Macroeconomics Dashboard (Olist, BCB and IBGE)</span>
+              </h3>
+              <p class="card-desc pt">
+                Cruza 99.441 pedidos reais da Olist (96.478 entregues) com APIs oficiais do Banco Central (SGS 433 IPCA, 432 Selic, 1 PTAX) e IBGE (população por UF) em modelo estrela de 11 tabelas, relatório Power BI PBIP de 4 páginas (107 medidas DAX com 17 títulos dinâmicos fx) e painel web bilíngue claro/escuro. Reconciliado 100% entre 6 gabaritos SQL, pandas puro, TOM/ADOMD no Power BI Desktop e Playwright.
+              </p>
+              <p class="card-desc en">
+                Joins 99,441 real Olist orders (96,478 delivered) with official Brazilian Central Bank (SGS 433 IPCA, 432 Selic, 1 USD PTAX) and IBGE state population APIs into an 11-table star schema, 4-page Power BI PBIP (107 DAX measures including 17 dynamic fx titles), and bilingual light/dark web dashboard reconciled 100% across SQL, pandas, TOM/DAX, and Playwright.
+              </p>
+              <div class="proof-box num">
+                <span class="pt">GMV real R$&nbsp;15,96&nbsp;mi (IPCA out/18 · +135,9% a/a) · SLA 93,23% · atraso derruba nota de 4,29 para 2,27 · 13 regras de qualidade (6.420 anomalias)</span>
+                <span class="en">Real GMV R$&nbsp;15.96M (IPCA Oct/18 · +135.9% YoY) · 93.23% on-time SLA · late deliveries cut rating from 4.29 to 2.27 · 13 data-quality rules (6,420 anomalies)</span>
               </div>
-              <div class="card-actions">
-                <a class="link-pill" href="https://balchuna.github.io/painel-ecommerce-macro-br/" target="_blank" rel="noopener"><span class="pt">Abrir painel ao vivo ↗</span><span class="en">Open live dashboard ↗</span></a>
-                <a class="link-pill" href="https://github.com/Balchuna/painel-ecommerce-macro-br" target="_blank" rel="noopener">GitHub &amp; PBIP ↗</a>
+              <div class="tag-row">
+                <span class="tag">Power BI (PBIP)</span><span class="tag">DAX (107)</span><span class="tag">SQL</span><span class="tag">Python / pandas</span><span class="tag">APIs BCB e IBGE</span>
+              </div>
+              <div class="action-row">
+                <a class="link-inline" href="https://balchuna.github.io/painel-ecommerce-macro-br/" target="_blank" rel="noopener">
+                  <span class="pt">Abrir painel ao vivo</span><span class="en">Open live dashboard</span>
+                  <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 11L11 5M6.5 5H11V9.5"/></svg>
+                </a>
+                <a class="link-inline" href="https://github.com/Balchuna/painel-ecommerce-macro-br" target="_blank" rel="noopener">
+                  <span>GitHub e PBIP</span>
+                  <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 11L11 5M6.5 5H11V9.5"/></svg>
+                </a>
               </div>
             </div>
           </article>
 
           <!-- 2. IDEA Central -->
-          <article id="idea-sst" class="card" style="scroll-margin-top: 84px;" data-cats="dados automacao">
-            <div class="card-media">
-              <div class="card-media-placeholder">
-                <div class="arch-flow">
-                  [RH CSV / Excel] ──▶ Validação por registro (12/172 bloqueados)<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br />
-                  [PySide6 Desktop + Bot Telegram (Node.js / JSON v1.0)]<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br />
-                  [SQLite / SQLAlchemy · 10 tabelas · Alembic · SHA-256]<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br />
-                  [Lote Word/PPTX → PDF · Trilha de Auditoria · 301 pytest]
-                </div>
+          <article id="idea-sst" class="flagship-card" data-cats="dados automacao" data-search="python pyside6 postgresql supabase sqlite sqlalchemy alembic telegram node.js sha-256 sst lgpd automacao documental">
+            <div class="flagship-media">
+              <div class="svg-diagram-wrap">
+                <svg class="svg-diagram" viewBox="0 0 420 236" role="img" aria-label="Diagrama de arquitetura do sistema IDEA Central: planilhas RH, validação de registros, banco SQLite de 10 tabelas com SQLAlchemy e Alembic, bot Telegram em Node.js e emissão em lote de PDF com hash SHA-256">
+                  <rect x="16" y="14" width="176" height="44" rx="6" fill="var(--surface)" stroke="var(--border-strong)" stroke-width="1.2"/>
+                  <text x="28" y="33" fill="var(--ink)" font-size="12" font-weight="600" font-family="var(--fonte)">Planilhas RH (CSV / Excel)</text>
+                  <text x="28" y="49" fill="var(--ink-3)" font-size="10.5" font-family="var(--fonte)">172 cadastros · 1.417 registros</text>
+
+                  <path d="M192 36 H222" stroke="var(--axis)" stroke-width="1.5"/>
+                  <polygon points="222,32 230,36 222,40" fill="var(--axis)"/>
+
+                  <rect x="230" y="14" width="174" height="44" rx="6" fill="var(--acento-wash)" stroke="var(--acento)" stroke-width="1.2"/>
+                  <text x="242" y="33" fill="var(--acento-ink)" font-size="12" font-weight="600" font-family="var(--fonte)">Validação por registro</text>
+                  <text x="242" y="49" fill="var(--ink-2)" font-size="10.5" font-family="var(--fonte)">12/172 incompletos bloqueados</text>
+
+                  <path d="M317 58 V82 H210 V94" fill="none" stroke="var(--axis)" stroke-width="1.5"/>
+                  <polygon points="206,94 210,102 214,94" fill="var(--axis)"/>
+
+                  <rect x="16" y="102" width="388" height="48" rx="6" fill="var(--surface)" stroke="var(--border-strong)" stroke-width="1.2"/>
+                  <text x="28" y="122" fill="var(--ink)" font-size="12" font-weight="600" font-family="var(--fonte)">PySide6 Desktop + Bot Telegram (Node.js / JSON v1.0)</text>
+                  <text x="28" y="139" fill="var(--ink-3)" font-size="10.5" font-family="var(--fonte)">SQLite / SQLAlchemy · 10 tabelas · Alembic · v1 em PostgreSQL/Supabase</text>
+
+                  <path d="M210 150 V172" stroke="var(--axis)" stroke-width="1.5"/>
+                  <polygon points="206,172 210,180 214,172" fill="var(--axis)"/>
+
+                  <rect x="16" y="180" width="388" height="44" rx="6" fill="var(--surface)" stroke="var(--acento)" stroke-width="1.2"/>
+                  <text x="28" y="199" fill="var(--ink)" font-size="12" font-weight="600" font-family="var(--fonte)">Emissão em lote Word/PPTX para PDF · SHA-256</text>
+                  <text x="28" y="215" fill="var(--ink-2)" font-size="10.5" font-family="var(--fonte)">100 docs/pessoa em 88 emissões (1 erro) · trilha de auditoria · 301 pytest</text>
+                </svg>
               </div>
             </div>
             <div class="card-body">
-              <div class="badges">
-                <span class="badge b-green"><span class="pt">Cliente real · Em produção</span><span class="en">Real Client · Production</span></span>
-                <span class="badge b-blue">301 pytest</span>
-                <span class="badge b-amber"><span class="pt">Privado (LGPD)</span><span class="en">Private (PII/LGPD)</span></span>
+              <div class="meta-row">
+                <span class="chip chip-accent"><span class="pt">Projeto principal 2</span><span class="en">Flagship 2</span></span>
+                <span class="chip"><span class="pt">Cliente real · Em produção</span><span class="en">Real client · Production</span></span>
+                <span class="chip num">301 pytest</span>
+                <span class="chip"><span class="pt">Código privado (LGPD)</span><span class="en">Private code (LGPD)</span></span>
               </div>
-              <h3><span class="pt">IDEA Central — Automação Documental &amp; Banco SST</span><span class="en">IDEA Central — Production OHS Automation Platform</span></h3>
-              <p class="pt">Sistema real para construtora que automatiza certificados NR/PEMT, OS e fichas de EPI em lote com hash SHA-256 e trilha de auditoria. Evoluiu de v1 web em Supabase/PostgreSQL (RLS e triggers) para desktop Python/PySide6 + SQLite (10 tabelas), bot Telegram e auditoria de 1.417 registros de 145 funcionários.</p>
-              <p class="en">Production platform for a construction client automating NR/PEMT safety certificates, work orders, and PPE forms with SHA-256 hashing and audit trails. Evolved from Supabase/PostgreSQL v1 (RLS &amp; triggers) into a Python/PySide6 + SQLite app (10 tables), Node.js Telegram bot, and 1,417-record audit across 145 workers.</p>
-              <div class="card-proof">100 docs/pessoa em 88 emissões (1 erro) · 145 trabalhadores / 1.417 registros auditados · SHA-256</div>
-              <div class="tags">
-                <span class="tag">Python</span><span class="tag">PostgreSQL/Supabase</span><span class="tag">SQLite</span><span class="tag">SQLAlchemy</span><span class="tag">Node.js Bot</span>
+              <h3 class="card-title">
+                <span class="pt">IDEA Central: automação documental e banco relacional de SST</span>
+                <span class="en">IDEA Central: production OHS document automation platform</span>
+              </h3>
+              <p class="card-desc pt">
+                Sistema comercial em produção para construtora (desde mar/2026) que automatiza certificados NR/PEMT, ordens de serviço e fichas de EPI em lote com hash SHA-256 e trilha de auditoria. Evoluiu de v1 web em Supabase/PostgreSQL (RLS e triggers) para desktop Python/PySide6 e SQLite (10 tabelas, migrações Alembic), bot Telegram em Node.js e auditoria de 1.417 registros de 145 trabalhadores.
+              </p>
+              <p class="card-desc en">
+                Commercial production platform for a construction client (since Mar 2026) automating NR/PEMT safety certificates, work orders, and PPE forms with SHA-256 hashing and audit trails. Evolved from Supabase/PostgreSQL v1 (RLS and triggers) into a Python/PySide6 and SQLite desktop app (10 tables, Alembic migrations), Node.js Telegram bot, and a 1,417-record audit across 145 workers.
+              </p>
+              <div class="proof-box num">
+                <span class="pt">100 docs/pessoa em 88 emissões concluídas (1 erro, conferido via SQL) · 145 trabalhadores e 1.417 registros auditados · análise reverteu contestação formal de PGR/PCMSO</span>
+                <span class="en">100 per-worker docs across 88 completed runs (1 error, SQL-verified) · 145 workers and 1,417 audited records · compliance audit overturned a formal regulatory dispute</span>
               </div>
-              <div class="card-actions">
-                <span class="link-muted pt">Código privado por LGPD — arquitetura e esquema SQL demonstráveis em entrevista.</span>
-                <span class="link-muted en">Private repo (employee PII) — architecture &amp; SQL schema available in interviews.</span>
+              <div class="tag-row">
+                <span class="tag">Python</span><span class="tag">PySide6</span><span class="tag">PostgreSQL / Supabase</span><span class="tag">SQLite / SQLAlchemy</span><span class="tag">Node.js Bot</span><span class="tag">SHA-256</span>
+              </div>
+              <div class="action-row">
+                <span class="muted-note pt">Repositório privado por LGPD (dados de trabalhadores): arquitetura e esquema SQL demonstráveis em entrevista.</span>
+                <span class="muted-note en">Private repository due to employee PII: architecture and SQL schema available for interview walkthroughs.</span>
               </div>
             </div>
           </article>
 
           <!-- 3. Dungeon-Alchemist MCP -->
-          <article id="dungeon-alchemist-mcp" class="card" style="scroll-margin-top: 84px;" data-cats="automacao">
-            <div class="card-media">
-              <div class="card-media-placeholder">
-                <div class="arch-flow">
-                  [Prompt PT-BR / Agente IA] ──▶ Servidor MCP / CLI<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br />
-                  [Biblioteca Python stdlib (2.800+ linhas) · Executor Idempotente]<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br />
-                  [Plugin C# · Ponte HTTP local (26 comandos) → Software Desktop]<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br />
-                  [Releitura do arquivo salvo · 12 tipos de verificação]
-                </div>
+          <article id="dungeon-alchemist-mcp" class="flagship-card" data-cats="automacao" data-search="c# python mcp server http bridge agentes ia claude automacao desktop idempotente">
+            <div class="flagship-media">
+              <div class="svg-diagram-wrap">
+                <svg class="svg-diagram" viewBox="0 0 420 236" role="img" aria-label="Diagrama da ponte HTTP C# e servidor MCP para Dungeon-Alchemist: prompt em linguagem natural, servidor MCP, biblioteca Python de 2.800 linhas com executor idempotente, plugin C# com 26 comandos HTTP locais e 12 verificações pós-gravação">
+                  <rect x="16" y="14" width="388" height="42" rx="6" fill="var(--acento-wash)" stroke="var(--acento)" stroke-width="1.2"/>
+                  <text x="28" y="32" fill="var(--acento-ink)" font-size="12" font-weight="600" font-family="var(--fonte)">Prompt em PT ou EN · Agente IA via Servidor MCP / CLI</text>
+                  <text x="28" y="47" fill="var(--ink-2)" font-size="10.5" font-family="var(--fonte)">Tradução determinística para especificação e plano estruturado</text>
+
+                  <path d="M210 56 V74" stroke="var(--axis)" stroke-width="1.5"/>
+                  <polygon points="206,74 210,82 214,74" fill="var(--axis)"/>
+
+                  <rect x="16" y="82" width="388" height="44" rx="6" fill="var(--surface)" stroke="var(--border-strong)" stroke-width="1.2"/>
+                  <text x="28" y="101" fill="var(--ink)" font-size="12" font-weight="600" font-family="var(--fonte)">Biblioteca Python stdlib (2.800+ linhas)</text>
+                  <text x="28" y="117" fill="var(--ink-3)" font-size="10.5" font-family="var(--fonte)">Executor idempotente · backup automático · checkpoints · diário de auditoria</text>
+
+                  <path d="M210 126 V144" stroke="var(--axis)" stroke-width="1.5"/>
+                  <polygon points="206,144 210,152 214,144" fill="var(--axis)"/>
+
+                  <rect x="16" y="152" width="186" height="68" rx="6" fill="var(--surface)" stroke="var(--border-strong)" stroke-width="1.2"/>
+                  <text x="28" y="173" fill="var(--ink)" font-size="12" font-weight="600" font-family="var(--fonte)">Plugin C# local</text>
+                  <text x="28" y="191" fill="var(--ink-2)" font-size="10.5" font-family="var(--fonte)">26 comandos HTTP internos</text>
+                  <text x="28" y="207" fill="var(--ink-3)" font-size="10.5" font-family="var(--fonte)">Host desktop sem API pública</text>
+
+                  <path d="M202 186 H224" stroke="var(--axis)" stroke-width="1.5"/>
+                  <polygon points="224,182 232,186 224,190" fill="var(--axis)"/>
+
+                  <rect x="232" y="152" width="172" height="68" rx="6" fill="var(--surface)" stroke="var(--acento)" stroke-width="1.2"/>
+                  <text x="244" y="173" fill="var(--ink)" font-size="12" font-weight="600" font-family="var(--fonte)">Releitura e auditoria</text>
+                  <text x="244" y="191" fill="var(--ink-2)" font-size="10.5" font-family="var(--fonte)">12 verificações pós-gravação</text>
+                  <text x="244" y="207" fill="var(--ink-3)" font-size="10.5" font-family="var(--fonte)">Validação determinística</text>
+                </svg>
               </div>
             </div>
             <div class="card-body">
-              <div class="badges">
-                <span class="badge b-indigo">C# + Python + MCP</span>
-                <span class="badge b-amber"><span class="pt">Privado (EULA) + Vídeo 68s</span><span class="en">Private (EULA) + 68s Video</span></span>
+              <div class="meta-row">
+                <span class="chip chip-accent"><span class="pt">Projeto principal 3</span><span class="en">Flagship 3</span></span>
+                <span class="chip">C# + Python + MCP</span>
+                <span class="chip"><span class="pt">Privado (EULA) + Vídeo 68s</span><span class="en">Private (EULA) + 68s video</span></span>
               </div>
-              <h3><span class="pt">Dungeon-Alchemist por Prompt — Ponte HTTP &amp; MCP</span><span class="en">Dungeon-Alchemist Prompt Automation — HTTP Bridge &amp; MCP</span></h3>
-              <p class="pt">Integração de software desktop sem API pública via plugin C# (26 comandos HTTP locais) + biblioteca Python pura (2.800+ linhas) com checkpoints, executor idempotente, 12 verificações pós-gravação e servidor MCP acionado por agentes de IA.</p>
-              <p class="en">Automates desktop software lacking a public API via a C# plugin (26 local HTTP commands) + pure-Python stdlib engine (2,800+ LOC) featuring checkpoints, idempotent execution, 12 post-save checks, and an AI-driven MCP server.</p>
-              <div class="card-proof">26 comandos HTTP · 12 checagens automáticas · CLI + MCP Server</div>
-              <div class="tags">
-                <span class="tag">C#</span><span class="tag">Python</span><span class="tag">HTTP Bridge</span><span class="tag">MCP Server</span><span class="tag">Applied AI</span>
+              <h3 class="card-title">
+                <span class="pt">Dungeon-Alchemist por prompt: ponte HTTP em C# e servidor MCP</span>
+                <span class="en">Dungeon-Alchemist prompt automation: C# HTTP bridge and MCP server</span>
+              </h3>
+              <p class="card-desc pt">
+                Automação ponta a ponta para um aplicativo desktop fechado sem API pública. Um plugin C# expõe 26 comandos HTTP locais dentro do host e uma biblioteca Python pura (stdlib, 2.800+ linhas) traduz pedidos em português ou inglês para um plano estruturado, executa de forma idempotente com backups e checkpoints, e relê o arquivo salvo em 12 verificações independentes via CLI ou servidor MCP.
+              </p>
+              <p class="card-desc en">
+                End-to-end automation for closed desktop software without a public API. A custom C# plugin exposes 26 local HTTP commands inside the host while a pure-Python stdlib engine (2,800+ LOC) translates Portuguese or English prompts into structured plans, executes idempotently with backups and checkpoints, and validates saved files across 12 independent checks via CLI and an MCP server.
+              </p>
+              <div class="proof-box num">
+                <span class="pt">26 comandos HTTP locais · 2.800+ linhas Python sem dependências externas · 12 verificações automáticas · CLI e servidor MCP</span>
+                <span class="en">26 local HTTP commands · 2,800+ LOC zero-dependency Python · 12 automated verification checks · CLI and MCP server</span>
               </div>
-              <div class="card-actions">
-                <a class="link-pill" href="https://drive.google.com/file/d/1XWy5Qg8_aGuIpLukzWZnooe488D5ud2G/view" target="_blank" rel="noopener"><span class="pt">Assistir demonstração (68s) ↗</span><span class="en">Watch 68s video demo ↗</span></a>
+              <div class="tag-row">
+                <span class="tag">C#</span><span class="tag">Python</span><span class="tag">HTTP Bridge</span><span class="tag">MCP Server</span><span class="tag">IA Aplicada</span>
+              </div>
+              <div class="action-row">
+                <a class="link-inline" href="https://drive.google.com/file/d/1XWy5Qg8_aGuIpLukzWZnooe488D5ud2G/view" target="_blank" rel="noopener">
+                  <span class="pt">Assistir demonstração (68s)</span><span class="en">Watch 68s video demo</span>
+                  <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 11L11 5M6.5 5H11V9.5"/></svg>
+                </a>
               </div>
             </div>
           </article>
+        </div>
 
+        <!-- 6 SECONDARY PROJECTS GRID -->
+        <div class="projects-grid" id="projects-grid">
           <!-- 4. Radar de Vagas -->
-          <article class="card" data-cats="dados automacao">
-            <div class="card-media">
-              <img src="assets/img/radar.png" alt="Radar de Vagas de Dados e TI — painel ao vivo" loading="lazy" />
-            </div>
+          <article id="radar-vagas" class="project-card" data-cats="dados automacao" data-search="python sql sqlite github actions etl cron greenhouse lever ashby chart.js vagas">
+            <button type="button" class="project-thumb-btn" data-lightbox-src="assets/img/radar.png" data-lightbox-title-pt="Radar de Vagas de Dados e TI · coleta semanal via APIs públicas" data-lightbox-title-en="Tech and Data Job Market Radar · weekly public API ETL">
+              <img src="assets/img/radar.png" alt="Painel ao vivo do Radar de Vagas de Dados e TI" loading="lazy" />
+              <span class="zoom-hint">
+                <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14M7 5v4M5 7h4"/></svg>
+                <span class="pt">Ampliar</span><span class="en">Expand</span>
+              </span>
+            </button>
             <div class="card-body">
-              <div class="badges">
-                <span class="badge b-green"><span class="pt">Ao vivo · Cron semanal</span><span class="en">Live · Weekly Cron</span></span>
-                <span class="badge b-blue">101 pytest + CI</span>
-                <span class="badge b-indigo"><span class="pt">Dados públicos reais</span><span class="en">Real Public APIs</span></span>
+              <div class="meta-row">
+                <span class="chip"><span class="pt">Ao vivo · Cron semanal</span><span class="en">Live · Weekly cron</span></span>
+                <span class="chip num">101 pytest + CI</span>
+                <span class="chip"><span class="pt">APIs públicas reais</span><span class="en">Real public APIs</span></span>
               </div>
-              <h3><span class="pt">Radar de Vagas de Dados e TI</span><span class="en">Tech &amp; Data Job Market Radar</span></h3>
-              <p class="pt">Coletor semanal via GitHub Actions consultando APIs públicas (Greenhouse, Lever e Ashby; 31 empresas, ToS e limite de 1 req/s verificados) com UPSERT idempotente em SQLite, 65 skills auditadas, análises em SQL e página Chart.js.</p>
-              <p class="en">Weekly GitHub Actions collector querying public Greenhouse, Lever, and Ashby APIs (31 companies, ToS &amp; 1 req/s verified) with idempotent SQLite UPSERTs, 65 audited skills, pure SQL analytics, and Chart.js reporting.</p>
-              <div class="card-proof">16/11/2026: 1.478 vagas ativas BR/LatAm · 91 dados (Python 78,0%, SQL 76,9%)</div>
-              <div class="tags">
-                <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">SQLite</span><span class="tag">GitHub Actions</span><span class="tag">Chart.js</span>
-              </div>
-              <div class="card-actions">
-                <a class="link-pill" href="https://balchuna.github.io/radar-vagas-dados/" target="_blank" rel="noopener"><span class="pt">Abrir painel ao vivo ↗</span><span class="en">Open live dashboard ↗</span></a>
-                <a class="link-pill" href="https://github.com/Balchuna/radar-vagas-dados" target="_blank" rel="noopener">GitHub ↗</a>
+              <h3 class="card-title"><span class="pt">Radar de Vagas de Dados e TI</span><span class="en">Tech and Data Job Market Radar</span></h3>
+              <p class="card-desc pt">Coletor semanal no GitHub Actions consultando APIs públicas (Greenhouse, Lever e Ashby em 31 empresas, ToS e 1 req/s verificados) com UPSERT idempotente em SQLite, 65 skills auditadas, análises em SQL e página Chart.js.</p>
+              <p class="card-desc en">Weekly GitHub Actions collector querying public Greenhouse, Lever, and Ashby APIs (31 companies, ToS and 1 req/s verified) with idempotent SQLite UPSERTs, 65 audited skills, SQL analytics, and Chart.js reporting.</p>
+              <div class="proof-box num">16/11/2026: 1.478 vagas ativas BR/LatAm · 91 de dados (Python 78,0%, SQL 76,9%)</div>
+              <div class="tag-row"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">SQLite</span><span class="tag">GitHub Actions</span><span class="tag">Chart.js</span></div>
+              <div class="action-row">
+                <a class="link-inline" href="https://balchuna.github.io/radar-vagas-dados/" target="_blank" rel="noopener">
+                  <span class="pt">Abrir painel ao vivo</span><span class="en">Open live dashboard</span>
+                  <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 11L11 5M6.5 5H11V9.5"/></svg>
+                </a>
+                <a class="link-inline" href="https://github.com/Balchuna/radar-vagas-dados" target="_blank" rel="noopener">
+                  <span>GitHub</span>
+                  <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 11L11 5M6.5 5H11V9.5"/></svg>
+                </a>
               </div>
             </div>
           </article>
 
           <!-- 5. Painel SST -->
-          <article class="card" data-cats="dados">
-            <div class="card-media">
+          <article id="painel-sst" class="project-card" data-cats="dados" data-search="power bi power query dax sqlite python sst certificacoes star schema pbip pytest">
+            <button type="button" class="project-thumb-btn" data-lightbox-src="assets/img/painel-sst.png" data-lightbox-title-pt="Painel de Certificações SST · Power BI validado por gabarito SQL" data-lightbox-title-en="OHS Certifications Dashboard · Power BI verified by SQL">
               <img src="assets/img/painel-sst.png" alt="Painel de Certificações SST em Power BI" loading="lazy" />
-            </div>
+              <span class="zoom-hint">
+                <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14M7 5v4M5 7h4"/></svg>
+                <span class="pt">Ampliar</span><span class="en">Expand</span>
+              </span>
+            </button>
             <div class="card-body">
-              <div class="badges">
-                <span class="badge b-blue">297 pytest + CI</span>
-                <span class="badge b-amber"><span class="pt">Dados sintéticos</span><span class="en">Synthetic Dataset</span></span>
+              <div class="meta-row">
+                <span class="chip num">297 pytest + CI</span>
+                <span class="chip"><span class="pt">Dados sintéticos</span><span class="en">Synthetic dataset</span></span>
               </div>
-              <h3><span class="pt">Painel de Certificações SST — Power BI + Gabarito SQL</span><span class="en">OHS Certifications Dashboard — Power BI Verified by SQL</span></h3>
-              <p class="pt">Dashboard Power BI (PBIP gerado por script Python) de 4 páginas sobre obra fictícia de 150 funcionários: limpeza no Power Query, modelo estrela (7 relações) e 27 medidas DAX. Testes abrem Excel e Power BI Desktop e exigem exatidão contra SQLite e pandas.</p>
-              <p class="en">4-page Power BI report (script-generated PBIP) for a synthetic 150-worker construction site: Power Query ETL, star schema (7 relationships), and 27 DAX measures. Automated tests open Excel &amp; Power BI Desktop to cross-check every metric against SQLite and pandas.</p>
-              <div class="card-proof">138 ativos · 63 irregulares · 86,4% conformidade · agenda 30/60/90 dias</div>
-              <div class="tags">
-                <span class="tag">Power BI</span><span class="tag">Power Query</span><span class="tag">DAX</span><span class="tag">SQLite</span><span class="tag">Python</span>
-              </div>
-              <div class="card-actions">
-                <a class="link-pill" href="https://github.com/Balchuna/painel-certificacoes-sst" target="_blank" rel="noopener">GitHub &amp; PDF do painel ↗</a>
+              <h3 class="card-title"><span class="pt">Painel de Certificações SST (Power BI e gabarito SQL)</span><span class="en">OHS Certifications Dashboard (Power BI verified by SQL)</span></h3>
+              <p class="card-desc pt">Relatório Power BI (PBIP gerado por script Python) de 4 páginas sobre obra sintética de 150 trabalhadores: tratamento no Power Query, modelo estrela (7 relações) e 27 medidas DAX conferidas por testes que abrem Excel e Power BI Desktop contra SQLite e pandas.</p>
+              <p class="card-desc en">4-page Power BI report (script-generated PBIP) for a synthetic 150-worker construction site: Power Query ETL, star schema (7 relationships), and 27 DAX measures verified by tests opening Excel and Power BI Desktop against SQLite and pandas.</p>
+              <div class="proof-box num">138 ativos · 63 irregulares · 86,4% de conformidade · agenda 30/60/90 dias</div>
+              <div class="tag-row"><span class="tag">Power BI</span><span class="tag">Power Query</span><span class="tag">DAX (27)</span><span class="tag">SQLite</span><span class="tag">Python</span></div>
+              <div class="action-row">
+                <a class="link-inline" href="https://github.com/Balchuna/painel-certificacoes-sst" target="_blank" rel="noopener">
+                  <span class="pt">GitHub e PDF do painel</span><span class="en">GitHub and report PDF</span>
+                  <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 11L11 5M6.5 5H11V9.5"/></svg>
+                </a>
               </div>
             </div>
           </article>
 
           <!-- 6. Job Stress Scale -->
-          <article class="card" data-cats="dados">
-            <div class="card-media">
-              <img src="assets/img/jss.png" alt="Estresse no Trabalho — Quadrantes de Karasek por setor" loading="lazy" />
-            </div>
+          <article id="estresse-jss" class="project-card" data-cats="dados" data-search="python pandas scipy psicologia lgpd people analytics karasek cronbach mann-whitney jss">
+            <button type="button" class="project-thumb-btn" data-lightbox-src="assets/img/jss.png" data-lightbox-title-pt="Estresse no Trabalho por Setor · Job Stress Scale e LGPD" data-lightbox-title-en="Workplace Stress by Department · Job Stress Scale and privacy">
+              <img src="assets/img/jss.png" alt="Gráfico dos quadrantes de Karasek do pipeline Job Stress Scale" loading="lazy" />
+              <span class="zoom-hint">
+                <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14M7 5v4M5 7h4"/></svg>
+                <span class="pt">Ampliar</span><span class="en">Expand</span>
+              </span>
+            </button>
             <div class="card-body">
-              <div class="badges">
-                <span class="badge b-blue">54 pytest + CI</span>
-                <span class="badge b-indigo"><span class="pt">Psicologia + LGPD</span><span class="en">People Analytics + Privacy</span></span>
-                <span class="badge b-amber"><span class="pt">Dados sintéticos</span><span class="en">Synthetic Dataset</span></span>
+              <div class="meta-row">
+                <span class="chip num">54 pytest + CI</span>
+                <span class="chip"><span class="pt">Psicologia e LGPD</span><span class="en">People analytics and privacy</span></span>
+                <span class="chip"><span class="pt">Dados sintéticos</span><span class="en">Synthetic dataset</span></span>
               </div>
-              <h3><span class="pt">Estresse no Trabalho por Setor (Job Stress Scale)</span><span class="en">Workplace Stress by Department (Job Stress Scale)</span></h3>
-              <p class="pt">Pipeline analítico unindo Psicologia e estatística (Alves et al., 2004; Aguiar et al., 2010): descarta PII já na leitura, aplica k-anonimato (k≥5 por setor), calcula quadrantes de Karasek (26% em alta exigência), alfa de Cronbach (0,80–0,87), Mann-Whitney e gera relatório HTML.</p>
-              <p class="en">People Analytics pipeline combining Psychology and statistics: strips PII on read, enforces k≥5 department grouping, scores reversed items, computes Karasek quadrants (26% high strain), Cronbach's alpha (0.80–0.87), Mann-Whitney U with effect size, and HTML reports.</p>
-              <div class="card-proof">130 respondentes · 2 unidades · Cronbach 0,80–0,87 · Mann-Whitney p=0,0002 (r=0,39)</div>
-              <div class="tags">
-                <span class="tag">Python</span><span class="tag">pandas</span><span class="tag">SciPy</span><span class="tag">LGPD / k≥5</span><span class="tag">HTML Report</span>
-              </div>
-              <div class="card-actions">
-                <a class="link-pill" href="https://github.com/Balchuna/estresse-trabalho-jss" target="_blank" rel="noopener">GitHub ↗</a>
+              <h3 class="card-title"><span class="pt">Estresse no Trabalho por Setor (Job Stress Scale)</span><span class="en">Workplace Stress by Department (Job Stress Scale)</span></h3>
+              <p class="card-desc pt">Pipeline analítico unindo Psicologia e estatística (Alves et al., 2004; Aguiar et al., 2010): descarta PII já na leitura, impõe k-anonimato (k>=5 por setor), calcula quadrantes de Karasek (26% alta exigência), alfa de Cronbach (0,80 a 0,87) e teste Mann-Whitney.</p>
+              <p class="card-desc en">People analytics pipeline combining Psychology and statistics: strips PII on read, enforces k>=5 department grouping, computes Karasek quadrants (26% high strain), Cronbach's alpha (0.80 to 0.87), Mann-Whitney U with effect size, and HTML reports.</p>
+              <div class="proof-box num">130 respondentes · 2 unidades · Cronbach 0,80–0,87 · Mann-Whitney p=0,0002 (r=0,39)</div>
+              <div class="tag-row"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">SciPy</span><span class="tag">LGPD / k>=5</span><span class="tag">HTML Report</span></div>
+              <div class="action-row">
+                <a class="link-inline" href="https://github.com/Balchuna/estresse-trabalho-jss" target="_blank" rel="noopener">
+                  <span>GitHub</span>
+                  <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 11L11 5M6.5 5H11V9.5"/></svg>
+                </a>
               </div>
             </div>
           </article>
 
           <!-- 7. Eva Flights -->
-          <article class="card" data-cats="automacao web">
-            <div class="card-media">
-              <img src="assets/img/eva.png" alt="Eva Flights — agregador multiprovedor de passagens aéreas" loading="lazy" />
-            </div>
+          <article id="eva-flights" class="project-card" data-cats="automacao web" data-search="node.js express react vite rest api passagens quota timeout node:test fullstack">
+            <button type="button" class="project-thumb-btn" data-lightbox-src="assets/img/eva.png" data-lightbox-title-pt="Eva Flights · agregador multiprovedor de passagens aéreas" data-lightbox-title-en="Eva Flights · multi-provider flight fare aggregator">
+              <img src="assets/img/eva.png" alt="Interface do Eva Flights agregando fontes de passagens aéreas" loading="lazy" />
+              <span class="zoom-hint">
+                <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14M7 5v4M5 7h4"/></svg>
+                <span class="pt">Ampliar</span><span class="en">Expand</span>
+              </span>
+            </button>
             <div class="card-body">
-              <div class="badges">
-                <span class="badge b-blue">118 node:test + CI</span>
-                <span class="badge b-green"><span class="pt">Modo demo sem chaves</span><span class="en">Zero-Key Demo Mode</span></span>
+              <div class="meta-row">
+                <span class="chip num">118 node:test + CI</span>
+                <span class="chip"><span class="pt">Modo demo sem chaves</span><span class="en">Zero-key demo mode</span></span>
               </div>
-              <h3><span class="pt">Eva Flights — Integração Multiprovedor de APIs</span><span class="en">Eva Flights — Multi-Provider Fare Aggregator</span></h3>
-              <p class="pt">App Full Stack (Node.js/Express + React/Vite) unificando 4 fontes de passagens com normalizadores testados por provedor, trava prévia de quota mensal (100 chamadas), timeout de 12s com degradação graciosa e deduplicação de ofertas.</p>
-              <p class="en">Full-stack Node.js/Express + React/Vite fare aggregator unifying 4 flight sources with tested per-provider normalizers, pre-request monthly quota locks (100 calls/mo), 12s timeouts with graceful fallbacks, and offer deduplication.</p>
-              <div class="card-proof">4 provedores · trava 100 chamadas/mês · CI Ubuntu (Node 20/22/24) + Windows</div>
-              <div class="tags">
-                <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">React</span><span class="tag">REST APIs</span><span class="tag">node:test</span>
-              </div>
-              <div class="card-actions">
-                <a class="link-pill" href="https://github.com/Balchuna/eva-flights" target="_blank" rel="noopener">GitHub ↗</a>
+              <h3 class="card-title"><span class="pt">Eva Flights: integração multiprovedor de APIs</span><span class="en">Eva Flights: multi-provider fare aggregator</span></h3>
+              <p class="card-desc pt">Aplicação full-stack (Node.js/Express e React/Vite) que unifica 4 APIs de passagens com normalizadores testados por provedor, trava prévia de quota mensal (100 chamadas), timeout de 12s com fallback gracioso e deduplicação.</p>
+              <p class="card-desc en">Full-stack Node.js/Express and React/Vite fare aggregator unifying 4 flight APIs with tested per-provider normalizers, pre-request monthly quota locks (100 calls/mo), 12s timeouts with graceful fallback, and deduplication.</p>
+              <div class="proof-box num">4 provedores · trava 100 chamadas/mês · CI Ubuntu (Node 20/22/24) e Windows</div>
+              <div class="tag-row"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">React</span><span class="tag">REST APIs</span><span class="tag">node:test</span></div>
+              <div class="action-row">
+                <a class="link-inline" href="https://github.com/Balchuna/eva-flights" target="_blank" rel="noopener">
+                  <span>GitHub</span>
+                  <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 11L11 5M6.5 5H11V9.5"/></svg>
+                </a>
               </div>
             </div>
           </article>
 
           <!-- 8. Hope Alívios Terapêuticos -->
-          <article class="card" data-cats="web">
-            <div class="card-media">
-              <img src="assets/img/hope.jpg" alt="Hope Alívios Terapêuticos — site institucional em produção" loading="lazy" />
-            </div>
+          <article id="hope-alivios" class="project-card" data-cats="web" data-search="next.js typescript react tailwind seo local acessibilidade fisioterapia web">
+            <button type="button" class="project-thumb-btn" data-lightbox-src="assets/img/hope.jpg" data-lightbox-title-pt="Hope Alívios Terapêuticos · site institucional em produção" data-lightbox-title-en="Hope Physiotherapy · production clinic website">
+              <img src="assets/img/hope.jpg" alt="Site institucional em produção da clínica Hope Alívios Terapêuticos" loading="lazy" />
+              <span class="zoom-hint">
+                <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14M7 5v4M5 7h4"/></svg>
+                <span class="pt">Ampliar</span><span class="en">Expand</span>
+              </span>
+            </button>
             <div class="card-body">
-              <div class="badges">
-                <span class="badge b-green"><span class="pt">Cliente real · Em produção</span><span class="en">Real Client · Live</span></span>
-                <span class="badge b-indigo">Next.js 16 + TS</span>
+              <div class="meta-row">
+                <span class="chip"><span class="pt">Cliente real · Em produção</span><span class="en">Real client · Live</span></span>
+                <span class="chip">Next.js 16 + TypeScript</span>
               </div>
-              <h3><span class="pt">Hope Alívios Terapêuticos — Site Institucional</span><span class="en">Hope Physiotherapy — Production Clinic Website</span></h3>
-              <p class="pt">Site completo em produção para clínica de fisioterapia (9 rotas) com SEO local verificado no Google Search Console, acessibilidade reforçada para público idoso e fluxo de agendamento que monta mensagem pronta para WhatsApp.</p>
-              <p class="en">Live 9-route clinic website built with Next.js 16, TypeScript, and Tailwind v4 featuring verified Google Search Console local SEO, senior-friendly accessibility, and structured WhatsApp booking conversion.</p>
-              <div class="card-proof">9 rotas · Lighthouse 100 em acessibilidade, boas práticas e SEO · Search Console verificado · entrega ponta a ponta (design → deploy)</div>
-              <div class="tags">
-                <span class="tag">Next.js 16</span><span class="tag">TypeScript</span><span class="tag">React 19</span><span class="tag">Tailwind v4</span><span class="tag">SEO Local</span>
-              </div>
-              <div class="card-actions">
-                <a class="link-pill" href="https://hopefisioterapia.netlify.app" target="_blank" rel="noopener"><span class="pt">Abrir site ao vivo ↗</span><span class="en">Open live site ↗</span></a>
+              <h3 class="card-title"><span class="pt">Hope Alívios Terapêuticos: site institucional</span><span class="en">Hope Physiotherapy: production clinic website</span></h3>
+              <p class="card-desc pt">Site institucional em produção para clínica de fisioterapia (9 rotas) com SEO local verificado no Google Search Console, acessibilidade reforçada para público idoso e fluxo de agendamento estruturado para WhatsApp.</p>
+              <p class="card-desc en">Live 9-route clinic website built with Next.js 16, TypeScript, and Tailwind v4 featuring verified Google Search Console local SEO, senior-friendly accessibility, and structured WhatsApp booking conversion.</p>
+              <div class="proof-box num">9 rotas · Lighthouse 100 em acessibilidade, boas práticas e SEO · entrega ponta a ponta</div>
+              <div class="tag-row"><span class="tag">Next.js 16</span><span class="tag">TypeScript</span><span class="tag">React 19</span><span class="tag">Tailwind v4</span><span class="tag">SEO local</span></div>
+              <div class="action-row">
+                <a class="link-inline" href="https://hopefisioterapia.netlify.app" target="_blank" rel="noopener">
+                  <span class="pt">Abrir site ao vivo</span><span class="en">Open live site</span>
+                  <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 11L11 5M6.5 5H11V9.5"/></svg>
+                </a>
               </div>
             </div>
           </article>
 
           <!-- 9. Wilton Alves BJJ -->
-          <article class="card" data-cats="web">
-            <div class="card-media">
-              <img src="assets/img/wilton.png" alt="Wilton Alves Jiu-Jitsu — landing page bilíngue" loading="lazy" />
-            </div>
+          <article id="wilton-bjj" class="project-card" data-cats="web" data-search="html5 css3 javascript landing page bilingue jiu-jitsu web">
+            <button type="button" class="project-thumb-btn" data-lightbox-src="assets/img/wilton.png" data-lightbox-title-pt="Wilton Alves Jiu-Jitsu · landing page bilíngue PT/EN" data-lightbox-title-en="Wilton Alves BJJ · bilingual PT/EN landing page">
+              <img src="assets/img/wilton.png" alt="Landing page bilíngue de Wilton Alves Jiu-Jitsu" loading="lazy" />
+              <span class="zoom-hint">
+                <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14M7 5v4M5 7h4"/></svg>
+                <span class="pt">Ampliar</span><span class="en">Expand</span>
+              </span>
+            </button>
             <div class="card-body">
-              <div class="badges">
-                <span class="badge b-green"><span class="pt">Ao vivo · Bilíngue PT/EN</span><span class="en">Live · Bilingual PT/EN</span></span>
+              <div class="meta-row">
+                <span class="chip"><span class="pt">Ao vivo · Bilíngue PT/EN</span><span class="en">Live · Bilingual PT/EN</span></span>
               </div>
-              <h3><span class="pt">Wilton Alves Jiu-Jitsu — Landing Page Bilíngue</span><span class="en">Wilton Alves BJJ — Bilingual Landing Page</span></h3>
-              <p class="pt">Landing page one-page responsiva e bilíngue (PT/EN) mobile-first, construída para marca pessoal de professor faixa-preta com foco em identidade visual e conversão direta via WhatsApp e Instagram.</p>
-              <p class="en">Mobile-first bilingual (PT/EN) personal-brand landing page for a Jiu-Jitsu black belt instructor focused on visual identity and direct WhatsApp/Instagram lead conversion.</p>
-              <div class="card-proof">Mobile-first · alternância PT/EN · carregamento instantâneo</div>
-              <div class="tags">
-                <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">UI Design</span><span class="tag">Bilíngue</span>
-              </div>
-              <div class="card-actions">
-                <a class="link-pill" href="https://portfolio-wilton.netlify.app/" target="_blank" rel="noopener"><span class="pt">Abrir site ao vivo ↗</span><span class="en">Open live site ↗</span></a>
+              <h3 class="card-title"><span class="pt">Wilton Alves Jiu-Jitsu: landing page bilíngue</span><span class="en">Wilton Alves BJJ: bilingual landing page</span></h3>
+              <p class="card-desc pt">Landing page responsiva e bilíngue (PT/EN) mobile-first, construída para marca pessoal de professor faixa-preta com foco em identidade visual e conversão direta via WhatsApp e Instagram.</p>
+              <p class="card-desc en">Mobile-first bilingual (PT/EN) personal-brand landing page for a Jiu-Jitsu black belt instructor focused on visual identity and direct WhatsApp and Instagram lead conversion.</p>
+              <div class="proof-box">Mobile-first · alternância PT/EN · carregamento instantâneo</div>
+              <div class="tag-row"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">UI Design</span><span class="tag">Bilíngue</span></div>
+              <div class="action-row">
+                <a class="link-inline" href="https://portfolio-wilton.netlify.app/" target="_blank" rel="noopener">
+                  <span class="pt">Abrir site ao vivo</span><span class="en">Open live site</span>
+                  <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 11L11 5M6.5 5H11V9.5"/></svg>
+                </a>
               </div>
             </div>
           </article>
         </div>
+
+        <div class="empty-state" id="empty-state" hidden>
+          <p class="pt">Nenhum projeto encontrado para esse filtro ou termo de busca. Limpe os filtros para ver todos os 9 projetos.</p>
+          <p class="en">No projects matched that filter or search term. Clear filters to view all 9 projects.</p>
+          <button type="button" class="btn btn-sm" id="reset-filters-btn">
+            <span class="pt">Limpar filtros</span><span class="en">Clear filters</span>
+          </button>
+        </div>
       </div>
     </section>
 
-    <section id="stack">
-      <div class="container">
-        <div class="two-col">
-          <div class="panel">
-            <h3><span class="pt">Stack &amp; Práticas de Engenharia</span><span class="en">Tech Stack &amp; Engineering Discipline</span></h3>
-            <ul class="list-clean">
-              <li><strong>SQL &amp; BI:</strong> SQLite, PostgreSQL/Supabase (modelagem relacional, índices, triggers, RLS, UPSERT, SQLAlchemy, Alembic), Power BI (Power Query, modelo estrela, DAX, PBIP), Excel avançado.</li>
-              <li><strong>Python &amp; Analytics:</strong> pandas, SciPy, PyMuPDF, automação Word/PPTX→PDF, estatística descritiva, Cronbach, Mann-Whitney, LGPD / k-anonimato, Chart.js.</li>
-              <li><strong>APIs, Web &amp; Automação:</strong> Node.js, Express, Telegram Bot API, C#, TypeScript, React 19, Next.js 16 (CSP estrita/SRI), Tailwind CSS v4, servidores MCP.</li>
-              <li><strong><span class="pt">Testes &amp; IA Aplicada:</span><span class="en">Testing &amp; Applied AI:</span></strong> pytest, <code>node:test</code>, GitHub Actions (CI &amp; cron), Windows Sandbox, Claude Code / Codex / OpenCode com regras versionadas e revisão orientada a testes.</li>
+    <!-- SECTION 4: Interactive Stack Tabs + Education & Languages Ledger -->
+    <section class="section" id="stack">
+      <div class="container two-col">
+        <div class="ledger-panel">
+          <div class="ledger-head">
+            <h2 class="ledger-title"><span class="pt">Stack técnica e prática</span><span class="en">Tech stack and practice</span></h2>
+            <div class="seg-group" role="tablist" aria-label="Categorias de competências">
+              <button type="button" class="seg-btn" role="tab" aria-selected="true" data-stack-tab="dados">
+                <span class="pt">Dados e BI</span><span class="en">Data and BI</span>
+              </button>
+              <button type="button" class="seg-btn" role="tab" aria-selected="false" data-stack-tab="eng">
+                <span class="pt">Engenharia</span><span class="en">Engineering</span>
+              </button>
+              <button type="button" class="seg-btn" role="tab" aria-selected="false" data-stack-tab="suporte">
+                <span class="pt">Suporte e IA</span><span class="en">Support and AI</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="stack-pane" data-stack-pane="dados">
+            <ul class="ledger-list">
+              <li>
+                <strong>Power BI e Excel</strong>
+                <span class="pt">Power Query (M), modelagem estrela, DAX, Time Intelligence, PBIP, publicação e RLS no Power BI Service; Excel avançado (PROCV, Tabelas Dinâmicas, validação e matrizes farol).</span>
+                <span class="en">Power Query (M), star schema, DAX, Time Intelligence, PBIP, Power BI Service publishing and RLS; advanced Excel (VLOOKUP, Pivot Tables, data validation, traffic-light matrices).</span>
+              </li>
+              <li>
+                <strong>SQL e bancos relacionais</strong>
+                <span class="pt">PostgreSQL/Supabase e SQLite (chaves, índices, views, triggers, RLS, UPSERT, SQLAlchemy, Alembic), com portabilidade ANSI validada para SQL Server (T-SQL) e MySQL 8.</span>
+                <span class="en">PostgreSQL/Supabase and SQLite (keys, indexes, views, triggers, RLS, UPSERT, SQLAlchemy, Alembic), with validated ANSI portability to SQL Server (T-SQL) and MySQL 8.</span>
+              </li>
+              <li>
+                <strong>Python analítico e qualidade de dados</strong>
+                <span class="pt">pandas, SciPy, PyMuPDF, Chart.js, estatística descritiva, alfa de Cronbach, teste Mann-Whitney, auditoria cadastral e anonimização LGPD (k>=5).</span>
+                <span class="en">pandas, SciPy, PyMuPDF, Chart.js, descriptive statistics, Cronbach's alpha, Mann-Whitney U, data auditing, and LGPD anonymization (k>=5).</span>
+              </li>
             </ul>
           </div>
 
-          <div class="panel">
-            <h3><span class="pt">Formação, Cursos &amp; Idiomas</span><span class="en">Education, Training &amp; Languages</span></h3>
-            <ul class="list-clean">
+          <div class="stack-pane" data-stack-pane="eng" hidden>
+            <ul class="ledger-list">
               <li>
-                <strong><span class="pt">Administrador de Banco de Dados — IFRS</span><span class="en">Database Administration — IFRS</span></strong>
-                <br /><span class="pt">Em andamento (previsão de conclusão: 01/2027).</span><span class="en">In progress (expected completion: 01/2027).</span>
+                <strong>APIs REST e automação</strong>
+                <span class="pt">Integração HTTP/JSON, paginação, rate limit, controle de quota, timeout com fallback gracioso, Node.js/Express, Telegram Bot API, C# (ponte HTTP local) e geração em lote Word/PPTX para PDF.</span>
+                <span class="en">HTTP/JSON integrations, pagination, rate limiting, quota guards, timeout fallbacks, Node.js/Express, Telegram Bot API, C# local HTTP bridge, and batch Word/PPTX-to-PDF pipelines.</span>
               </li>
               <li>
-                <strong><span class="pt">Bacharelado em Psicologia — FMU (São Paulo/SP)</span><span class="en">B.A. in Psychology — FMU (São Paulo, Brazil)</span></strong>
-                <br /><span class="pt">Concluído em 06/2026 · Base sólida em psicometria, entrevistas, sigilo e gestão de pessoas/SST.</span><span class="en">Graduated 06/2026 · Strong foundation in psychometrics, privacy, and people/OHS analytics.</span>
+                <strong>Web e frontend</strong>
+                <span class="pt">TypeScript, JavaScript, React 19, Next.js 16 (App Router, geração estática, CSP estrita com hashes SRI), Tailwind CSS v4, acessibilidade e SEO técnico.</span>
+                <span class="en">TypeScript, JavaScript, React 19, Next.js 16 (App Router, static builds, strict CSP with SRI hashes), Tailwind CSS v4, accessibility, and technical SEO.</span>
               </li>
               <li>
-                <strong><span class="pt">Análise de Dados e Power BI (Microsoft Learn / Fundação Bradesco)</span><span class="en">Data Analytics &amp; Power BI (Microsoft Learn / Fundação Bradesco)</span></strong>
-                <br /><span class="pt">Concluído · Trilha prática contínua em SQL, Python e APIs REST.</span><span class="en">Completed · Ongoing hands-on specialization in SQL, Python &amp; REST APIs.</span>
-              </li>
-              <li>
-                <strong><span class="pt">Cursos da Anthropic sobre Claude Code</span><span class="en">Anthropic Claude Code Courses</span></strong>
-                <br /><span class="pt">Concluídos · Desenvolvimento assistido por IA com revisão orientada a testes.</span><span class="en">Completed · Test-gated AI-assisted engineering workflows.</span>
-              </li>
-              <li>
-                <strong><span class="pt">Idiomas &amp; Intercâmbio:</span><span class="en">Languages &amp; Exchange:</span></strong>
-                <span class="pt">Português (nativo) · Inglês (fluente — 90% / percentil 97) · Espanhol (básico) · Intercâmbio em Portugal (2018–2019).</span>
-                <span class="en">Portuguese (Native) · English (Fluent — 90% / 97th percentile) · Spanish (Basic) · Academic Exchange in Portugal (2018–2019).</span>
+                <strong>Testes e entrega contínua</strong>
+                <span class="pt">pytest, <code>node:test</code>, Playwright, Git, GitHub Actions (CI multi-OS Ubuntu/Windows e cron semanal) e empacotamento validado em Windows Sandbox.</span>
+                <span class="en">pytest, <code>node:test</code>, Playwright, Git, GitHub Actions (multi-OS Ubuntu/Windows CI and weekly cron), and installers verified in Windows Sandbox.</span>
               </li>
             </ul>
           </div>
+
+          <div class="stack-pane" data-stack-pane="suporte" hidden>
+            <ul class="ledger-list">
+              <li>
+                <strong>Suporte técnico, atendimento e compliance</strong>
+                <span class="pt">Atendimento de alto volume (100+ ligações/dia no SAS-Seconci e ~100/dia na A.B.P.), auditoria documental SST desde 01/2022 (SBC Segurança), troubleshooting com SQL/logs, documentação (FAQ/KB) e prontidão HIPAA/LGPD.</span>
+                <span class="en">High-volume support (100+ daily hospital calls at SAS-Seconci, ~100/day at A.B.P.), OHS compliance auditing since 01/2022 (SBC Segurança), SQL/log troubleshooting, technical KB writing, and HIPAA/LGPD readiness.</span>
+              </li>
+              <li>
+                <strong>ITSM e CRM (prática em ambiente sandbox)</strong>
+                <span class="pt">Zendesk, Jira Service Management e HubSpot: abertura e triagem de tickets, macros, acompanhamento de SLAs e organização de base de conhecimento.</span>
+                <span class="en">Zendesk, Jira Service Management, and HubSpot: ticket triage, macros, SLA tracking, and knowledge-base workflows.</span>
+              </li>
+              <li>
+                <strong>IA aplicada e engenharia assistida</strong>
+                <span class="pt">Claude Code (cursos da Anthropic concluídos), Codex, OpenCode, servidores MCP customizados e fluxos multiagente com verificação determinística por testes.</span>
+                <span class="en">Claude Code (Anthropic courses completed), Codex, OpenCode, custom MCP servers, and multi-agent workflows gated by deterministic automated tests.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ledger-panel">
+          <div class="ledger-head">
+            <h2 class="ledger-title"><span class="pt">Formação, cursos e idiomas</span><span class="en">Education, training and languages</span></h2>
+          </div>
+          <ul class="ledger-list">
+            <li>
+              <strong><span class="pt">Administrador de Banco de Dados (Qualificação Profissional) · IFRS</span><span class="en">Database Administration (Qualification Program) · IFRS</span></strong>
+              <span class="pt">Em andamento, previsão de conclusão em 01/2027.</span>
+              <span class="en">In progress, expected completion in 01/2027.</span>
+            </li>
+            <li>
+              <strong><span class="pt">Bacharelado em Psicologia · FMU (São Paulo, SP)</span><span class="en">B.A. in Psychology · FMU (São Paulo, Brazil)</span></strong>
+              <span class="pt">Concluído em 06/2026 · Base prática em psicometria, entrevistas clínicas, mediação de conflitos e sigilo.</span>
+              <span class="en">Graduated 06/2026 · Practical foundation in psychometrics, clinical interviews, conflict mediation, and confidentiality.</span>
+            </li>
+            <li>
+              <strong><span class="pt">Formação complementar</span><span class="en">Additional training</span></strong>
+              <span class="pt">Análise de Dados e Power BI (Microsoft Learn / Fundação Bradesco, concluído) · Cursos da Anthropic sobre Claude Code (concluídos) · Intercâmbio acadêmico em Portugal (2018–2019).</span>
+              <span class="en">Data Analytics and Power BI (Microsoft Learn / Fundação Bradesco, completed) · Anthropic Claude Code courses (completed) · Academic exchange in Portugal (2018–2019).</span>
+            </li>
+            <li>
+              <strong><span class="pt">Idiomas e infraestrutura remota</span><span class="en">Languages and remote setup</span></strong>
+              <span class="pt">Português nativo · Inglês fluente escrito e falado (nível C1, 90% / percentil 97) · Espanhol básico · Home office dedicado, fibra cabeada (Ethernet), headset e microfone USB com cancelamento de ruído.</span>
+              <span class="en">Native Portuguese · Fluent written and spoken English (C1 level, 90% / 97th percentile) · Basic Spanish · Dedicated quiet home office, wired fiber (Ethernet), USB headset and noise-cancelling mic.</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
   </main>
 
-  <footer id="contato">
-    <div class="container footer-inner">
+  <footer class="site-footer" id="contato">
+    <div class="container footer-grid">
       <div>
-        <div class="brand" style="margin-bottom: 6px;">
-          <span class="brand-dot" aria-hidden="true"></span>
-          <span>Rafael Bernardes Barros Balchuna</span>
-        </div>
-        <div class="footer-note pt">Aberto para vagas CLT/PJ (Remoto ou SP) e projetos sob medida de Dados, BI e Automação.</div>
-        <div class="footer-note en">Open to full-time remote roles (LatAm/Global) and tailored Data, BI &amp; Python Automation projects.</div>
+        <div class="footer-sig">Rafael Balchuna · Power BI · SQL · Python</div>
+        <p class="footer-note pt">
+          Transparência de dados: o Painel E-Commerce usa pedidos reais públicos da Olist (CC BY-NC-SA 4.0) e APIs oficiais do BCB/IBGE; o Radar usa APIs públicas de recrutamento; Painel SST e Job Stress Scale usam dados sintéticos com semente fixa; IDEA Central mantém código privado por LGPD.
+        </p>
+        <p class="footer-note en">
+          Data transparency: E-Commerce BI uses real public Olist orders (CC BY-NC-SA 4.0) and official BCB/IBGE APIs; Job Radar queries public ATS feeds; OHS BI and Job Stress Scale use seeded synthetic datasets; IDEA Central remains private under LGPD.
+        </p>
       </div>
-      <div class="cta-row" style="margin: 0;">
-        <a class="btn" href="mailto:balchunarafael@gmail.com">E-mail</a>
-        <a class="btn" href="https://www.linkedin.com/in/rafael-balchuna" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="https://github.com/Balchuna" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn btn-primary" href="https://wa.me/5511966265880" target="_blank" rel="noopener">WhatsApp</a>
+      <div class="footer-actions">
+        <button type="button" class="btn btn-sm" data-copy-email>
+          <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="5" width="8" height="9" rx="1.5"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11"/></svg>
+          <span class="pt copy-label">Copiar e-mail</span>
+          <span class="en copy-label">Copy email</span>
+        </button>
+        <a class="btn btn-sm" href="https://www.linkedin.com/in/rafael-balchuna" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-sm" href="https://github.com/Balchuna" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-sm btn-primary" href="https://wa.me/5511966265880" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
   </footer>
 
+  <!-- Native Accessible Lightbox -->
+  <dialog class="lightbox" id="lightbox" aria-labelledby="lightbox-title">
+    <div class="lightbox-bar">
+      <span class="lightbox-title" id="lightbox-title"></span>
+      <button type="button" class="btn btn-sm" id="lightbox-close">
+        <span class="pt">Fechar</span><span class="en">Close</span>
+      </button>
+    </div>
+    <div class="lightbox-img-wrap" id="lightbox-img-wrap"></div>
+  </dialog>
+
   <script>
     (function () {
+      const root = document.documentElement;
       const body = document.body;
-      const langBtns = document.querySelectorAll('.lang-btn');
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const cards = document.querySelectorAll('.card');
+      const EMAIL = 'balchunarafael@gmail.com';
+      let currentLang = 'pt';
+      let currentFilter = 'all';
+      let selectedBarId = null;
 
-      function setLang(lang) {
-        const clean = lang === 'en' ? 'en' : 'pt';
-        body.classList.remove('lang-pt', 'lang-en');
-        body.classList.add('lang-' + clean);
-        document.documentElement.lang = clean === 'en' ? 'en' : 'pt-BR';
-        langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === clean));
+      /* --- Data for Interactive Architecture Inspectors --- */
+      const ideaSteps = [
+        {
+          ptHead: 'Etapa 1 · Ingestão de planilhas de RH',
+          ptBody: 'Leitura automatizada das planilhas de trabalhadores da obra (172 cadastros iniciais), normalizando datas, funções e obrigatoriedades de NR/PEMT sem edição manual no Word ou PowerPoint.',
+          enHead: 'Stage 1 · HR spreadsheet ingestion',
+          enBody: 'Automated ingestion of construction-site HR spreadsheets (172 worker records), normalizing dates, roles, and regulatory requirements without manual Word or PowerPoint edits.'
+        },
+        {
+          ptHead: 'Etapa 2 · Validação por registro (12 de 172 bloqueados)',
+          ptBody: 'Regras explícitas validam CPF, datas de exames (ASO) e vencimentos antes da emissão, barrando 12 perfis incompletos ou inconsistentes antes que documentos irregulares cheguem ao campo.',
+          enHead: 'Stage 2 · Record-level validation (12 of 172 blocked)',
+          enBody: 'Explicit upfront checks validate IDs, medical exams, and expiration dates before generation, blocking 12 incomplete profiles before non-compliant documents reach the job site.'
+        },
+        {
+          ptHead: 'Etapa 3 · Banco relacional de 10 tabelas e migrações versionadas',
+          ptBody: 'Evoluiu de v1 web em PostgreSQL/Supabase (com RLS e triggers) para aplicativo desktop Python/PySide6 com SQLite, SQLAlchemy e migrações Alembic versionadas, validado por 301 testes pytest.',
+          enHead: 'Stage 3 · 10-table relational DB and versioned migrations',
+          enBody: 'Evolved from a Supabase/PostgreSQL web prototype (RLS policies and triggers) into a Python/PySide6 desktop app backed by SQLite, SQLAlchemy, and Alembic migrations with 301 pytest tests.'
+        },
+        {
+          ptHead: 'Etapa 4 · Bot Telegram via contrato JSON v1.0',
+          ptBody: 'Bot em Node.js integrado ao motor Python por contrato JSON tipado, permitindo solicitações pela equipe em campo com credenciais fora dos logs e inicialização automática no Windows.',
+          enHead: 'Stage 4 · Node.js Telegram bot over typed JSON v1.0',
+          enBody: 'Node.js Telegram bot integrated with the Python engine over a versioned JSON contract, keeping credentials out of logs and enabling autonomous team requests.'
+        },
+        {
+          ptHead: 'Etapa 5 · Emissão em lote PDF, idempotência e hash SHA-256',
+          ptBody: 'Cada pedido grava request_id único, snapshot dos dados na data da emissão, hash SHA-256 do PDF e trilha de auditoria. Registrou 100 docs/pessoa em 88 emissões concluídas (1 erro, conferido via SQL).',
+          enHead: 'Stage 5 · Batch PDF export, idempotency and SHA-256 hash',
+          enBody: 'Every run stores a unique request_id, point-in-time data snapshot, PDF SHA-256 hash, and audit log. Recorded 100 per-worker docs across 88 runs (1 failed run, verified directly via SQL).'
+        }
+      ];
+
+      const mcpSteps = [
+        {
+          ptHead: 'Camada 1 · Servidor MCP e CLI',
+          ptBody: 'Expõe ferramentas estruturadas via Model Context Protocol (MCP) e linha de comando, aceitando pedidos em português ou inglês e devolvendo respostas verificadas ao agente de IA.',
+          enHead: 'Layer 1 · MCP server and CLI',
+          enBody: 'Exposes structured tools over Model Context Protocol (MCP) and CLI, accepting natural-language prompts in Portuguese or English and returning verified results to the AI agent.'
+        },
+        {
+          ptHead: 'Camada 2 · Biblioteca Python stdlib (2.800+ linhas)',
+          ptBody: 'Zero dependências externas. Traduz a especificação em um plano executável, cria backup antes de sobrescrever arquivos e mantém checkpoints e diário de auditoria para execução idempotente.',
+          enHead: 'Layer 2 · Pure-Python stdlib engine (2,800+ LOC)',
+          enBody: 'Zero external dependencies. Translates specifications into an executable plan, writes pre-overwrite backups, and records recovery checkpoints and an audit journal for idempotent runs.'
+        },
+        {
+          ptHead: 'Camada 3 · Plugin C# com ponte HTTP local (26 comandos)',
+          ptBody: 'Carregado dentro do software desktop fechado (que não oferece API pública), expõe 26 comandos HTTP locais tipados apenas em localhost para manipular cena, geometria e exportação.',
+          enHead: 'Layer 3 · Local C# HTTP bridge plugin (26 commands)',
+          enBody: 'Runs inside the closed desktop host lacking a public API, exposing 26 localhost-only HTTP commands to control layout, scene state, and saving.'
+        },
+        {
+          ptHead: 'Camada 4 · Releitura e 12 verificações determinísticas',
+          ptBody: 'Em vez de confiar cegamente no retorno do modelo, o executor relê o arquivo salvo em disco e executa 12 tipos de checagem independentes antes de marcar a execução como concluída.',
+          enHead: 'Layer 4 · Artifact read-back and 12 deterministic checks',
+          enBody: 'Instead of trusting unverified model output, the runner reads the saved file back from disk and runs 12 independent verification checks before marking a run complete.'
+        }
+      ];
+
+      /* --- Data for Dynamic Finding Title on Test Bar Chart --- */
+      const barMeta = {
+        'idea-sst': {
+          pt: 'IDEA Central concentra 301 testes pytest (31,4% da suíte) cobrindo 10 tabelas SQLite, validação de RH e emissão em lote',
+          en: 'IDEA Central holds 301 pytest tests (31.4% of the suite) covering 10 SQLite tables, HR validation, and batch PDF issuance'
+        },
+        'painel-sst': {
+          pt: 'Painel de Certificações SST roda 297 testes pytest (31,0%) abrindo Excel e Power BI Desktop contra gabarito SQLite',
+          en: 'OHS Certifications Dashboard runs 297 pytest tests (31.0%) opening Excel and Power BI Desktop against a SQLite answer key'
+        },
+        'eva-flights': {
+          pt: 'Eva Flights executa 118 testes node:test (12,3%) validando 4 APIs de passagens, trava de quota e timeout em Ubuntu e Windows',
+          en: 'Eva Flights runs 118 node:test checks (12.3%) verifying 4 flight APIs, monthly quota locks, and timeouts on Ubuntu and Windows'
+        },
+        'radar-vagas': {
+          pt: 'Radar de Vagas mantém 101 testes pytest (10,5%) auditando o ETL semanal (Greenhouse, Lever, Ashby) e 65 skills em SQL',
+          en: 'Job Market Radar maintains 101 pytest tests (10.5%) auditing weekly ATS ETL (Greenhouse, Lever, Ashby) and 65 SQL skills'
+        },
+        'ecommerce': {
+          pt: 'E-Commerce e Macro BI reconcilia 88 testes pytest, TOM/ADOMD e Playwright (9,2%) entre 6 gabaritos SQL, 107 DAX e web',
+          en: 'E-Commerce and Macro BI reconciles 88 pytest, TOM/ADOMD, and Playwright tests (9.2%) across 6 SQL keys, 107 DAX, and web'
+        },
+        'estresse-jss': {
+          pt: 'Job Stress Scale aplica 54 testes pytest (5,6%) garantindo descarte de PII, k>=5 por setor, Cronbach e Mann-Whitney',
+          en: 'Job Stress Scale enforces 54 pytest tests (5.6%) verifying PII stripping, k>=5 grouping, Cronbach alpha, and Mann-Whitney U'
+        }
+      };
+
+      const defaultFinding = {
+        pt: '959 testes automatizados cobrem 5 repositórios públicos com CI e 1 sistema comercial',
+        en: '959 automated tests cover 5 public CI repositories and 1 commercial system'
+      };
+
+      let activeIdeaStep = 0;
+      let activeMcpStep = 0;
+
+      function renderIdeaStep(idx) {
+        activeIdeaStep = idx;
+        const item = ideaSteps[idx];
+        document.getElementById('idea-detail-head').textContent = currentLang === 'en' ? item.enHead : item.ptHead;
+        document.getElementById('idea-detail-body').textContent = currentLang === 'en' ? item.enBody : item.ptBody;
+        document.querySelectorAll('[data-idea-step]').forEach(btn => {
+          btn.setAttribute('aria-pressed', String(Number(btn.dataset.ideaStep) === idx));
+        });
       }
 
-      const params = new URLSearchParams(window.location.search);
-      if (params.get('lang') === 'en') setLang('en');
+      function renderMcpStep(idx) {
+        activeMcpStep = idx;
+        const item = mcpSteps[idx];
+        document.getElementById('mcp-detail-head').textContent = currentLang === 'en' ? item.enHead : item.ptHead;
+        document.getElementById('mcp-detail-body').textContent = currentLang === 'en' ? item.enBody : item.ptBody;
+        document.querySelectorAll('[data-mcp-step]').forEach(btn => {
+          btn.setAttribute('aria-pressed', String(Number(btn.dataset.mcpStep) === idx));
+        });
+      }
+
+      function renderBarFinding() {
+        const findingEl = document.getElementById('chart-finding');
+        if (selectedBarId && barMeta[selectedBarId]) {
+          findingEl.textContent = barMeta[selectedBarId][currentLang];
+        } else {
+          findingEl.textContent = defaultFinding[currentLang];
+        }
+      }
+
+      /* --- Theme Switching --- */
+      const themeBtns = document.querySelectorAll('[data-theme-set]');
+      function setTheme(theme, persist) {
+        const clean = theme === 'dark' ? 'dark' : 'light';
+        root.setAttribute('data-theme', clean);
+        themeBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.themeSet === clean)));
+        if (persist) {
+          try { localStorage.setItem('balchuna_theme', clean); } catch (e) {}
+        }
+      }
+
+      themeBtns.forEach(btn => {
+        btn.addEventListener('click', () => setTheme(btn.dataset.themeSet, true));
+      });
+
+      /* --- Language Switching --- */
+      const langBtns = document.querySelectorAll('[data-lang]');
+      const searchInput = document.getElementById('project-search');
+      function setLang(lang) {
+        currentLang = lang === 'en' ? 'en' : 'pt';
+        body.classList.remove('lang-pt', 'lang-en');
+        body.classList.add('lang-' + currentLang);
+        root.lang = currentLang === 'en' ? 'en' : 'pt-BR';
+        langBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === currentLang)));
+        searchInput.placeholder = currentLang === 'en'
+          ? 'Search: Power BI, SQL, MCP...'
+          : 'Buscar: Power BI, SQL, MCP...';
+        renderIdeaStep(activeIdeaStep);
+        renderMcpStep(activeMcpStep);
+        renderBarFinding();
+        applyProjectFilters();
+      }
 
       langBtns.forEach(btn => {
         btn.addEventListener('click', () => setLang(btn.dataset.lang));
       });
 
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const f = btn.dataset.filter;
-          filterBtns.forEach(b => b.classList.toggle('active', b === btn));
-          cards.forEach(c => {
-            const cats = (c.dataset.cats || '').split(' ');
-            c.classList.toggle('hidden', f !== 'all' && !cats.includes(f));
-          });
+      /* --- Stage Tabs --- */
+      const stageTabs = document.querySelectorAll('[data-stage-tab]');
+      const stagePanels = document.querySelectorAll('[data-stage-panel]');
+      stageTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const target = tab.dataset.stageTab;
+          stageTabs.forEach(t => t.setAttribute('aria-selected', String(t === tab)));
+          stagePanels.forEach(p => { p.hidden = p.dataset.stagePanel !== target; });
         });
       });
+
+      document.querySelectorAll('[data-idea-step]').forEach(btn => {
+        btn.addEventListener('click', () => renderIdeaStep(Number(btn.dataset.ideaStep)));
+      });
+      document.querySelectorAll('[data-mcp-step]').forEach(btn => {
+        btn.addEventListener('click', () => renderMcpStep(Number(btn.dataset.mcpStep)));
+      });
+
+      /* --- Stack Tabs --- */
+      const stackTabs = document.querySelectorAll('[data-stack-tab]');
+      const stackPanes = document.querySelectorAll('[data-stack-pane]');
+      stackTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const target = tab.dataset.stackTab;
+          stackTabs.forEach(t => t.setAttribute('aria-selected', String(t === tab)));
+          stackPanes.forEach(p => { p.hidden = p.dataset.stackPane !== target; });
+        });
+      });
+
+      /* --- Interactive Verification Bars (Cross-Highlight) --- */
+      const barList = document.getElementById('test-bar-list');
+      const barRows = document.querySelectorAll('.bar-row');
+      const clearBarBtn = document.getElementById('clear-bar-btn');
+      const jumpSelectedBtn = document.getElementById('jump-selected-btn');
+
+      function selectBar(id) {
+        selectedBarId = selectedBarId === id ? null : id;
+        barList.classList.toggle('has-selection', Boolean(selectedBarId));
+        barRows.forEach(row => {
+          row.setAttribute('aria-pressed', String(row.dataset.barId === selectedBarId));
+        });
+        clearBarBtn.hidden = !selectedBarId;
+        jumpSelectedBtn.hidden = !selectedBarId;
+        document.querySelectorAll('.flagship-card, .project-card').forEach(card => {
+          card.classList.toggle('is-highlighted', card.id === selectedBarId);
+        });
+        renderBarFinding();
+      }
+
+      barRows.forEach(row => {
+        row.addEventListener('click', () => selectBar(row.dataset.barId));
+      });
+      clearBarBtn.addEventListener('click', () => selectBar(selectedBarId));
+      jumpSelectedBtn.addEventListener('click', () => {
+        if (!selectedBarId) return;
+        currentFilter = 'all';
+        searchInput.value = '';
+        filterBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === 'all')));
+        applyProjectFilters();
+        const el = document.getElementById(selectedBarId);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+
+      /* --- Project Filtering & Search --- */
+      const filterBtns = document.querySelectorAll('[data-filter]');
+      const allProjectCards = document.querySelectorAll('.flagship-card, .project-card');
+      const resultCount = document.getElementById('result-count');
+      const emptyState = document.getElementById('empty-state');
+      const resetFiltersBtn = document.getElementById('reset-filters-btn');
+
+      function applyProjectFilters() {
+        const q = (searchInput.value || '').trim().toLowerCase();
+        let visible = 0;
+        allProjectCards.forEach(card => {
+          const cats = (card.dataset.cats || '').split(' ');
+          const hay = ((card.dataset.search || '') + ' ' + card.textContent).toLowerCase();
+          const matchCat = currentFilter === 'all' || cats.includes(currentFilter);
+          const matchQuery = !q || hay.includes(q);
+          const show = matchCat && matchQuery;
+          card.classList.toggle('hidden', !show);
+          if (show) visible += 1;
+        });
+        emptyState.hidden = visible > 0;
+        resultCount.textContent = currentLang === 'en'
+          ? 'Showing ' + visible + ' of ' + allProjectCards.length + ' projects'
+          : 'Exibindo ' + visible + ' de ' + allProjectCards.length + ' projetos';
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentFilter = btn.dataset.filter;
+          filterBtns.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+          applyProjectFilters();
+        });
+      });
+      searchInput.addEventListener('input', applyProjectFilters);
+      resetFiltersBtn.addEventListener('click', () => {
+        currentFilter = 'all';
+        searchInput.value = '';
+        filterBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === 'all')));
+        applyProjectFilters();
+      });
+
+      /* --- Copy Email Interaction --- */
+      document.querySelectorAll('[data-copy-email]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(EMAIL);
+          } catch (e) {
+            window.location.href = 'mailto:' + EMAIL;
+            return;
+          }
+          btn.classList.add('btn-copied');
+          const ptEl = btn.querySelector('.pt.copy-label');
+          const enEl = btn.querySelector('.en.copy-label');
+          if (ptEl) ptEl.textContent = 'E-mail copiado';
+          if (enEl) enEl.textContent = 'Email copied';
+          setTimeout(() => {
+            btn.classList.remove('btn-copied');
+            if (ptEl) ptEl.textContent = 'Copiar e-mail';
+            if (enEl) enEl.textContent = 'Copy email';
+          }, 2200);
+        });
+      });
+
+      /* --- Native Lightbox --- */
+      const lightbox = document.getElementById('lightbox');
+      const lightboxWrap = document.getElementById('lightbox-img-wrap');
+      const lightboxTitle = document.getElementById('lightbox-title');
+      const lightboxClose = document.getElementById('lightbox-close');
+
+      function closeLightbox() {
+        lightbox.close();
+        lightboxWrap.innerHTML = '';
+      }
+
+      document.querySelectorAll('[data-lightbox-src]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const title = currentLang === 'en' ? btn.dataset.lightboxTitleEn : btn.dataset.lightboxTitlePt;
+          lightboxTitle.textContent = title;
+          lightboxWrap.innerHTML = '';
+          const img = document.createElement('img');
+          img.src = btn.dataset.lightboxSrc;
+          img.alt = title;
+          lightboxWrap.appendChild(img);
+          if (typeof lightbox.showModal === 'function') lightbox.showModal();
+        });
+      });
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', e => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      /* --- Init from URL & Storage --- */
+      const params = new URLSearchParams(window.location.search);
+      const urlTheme = params.get('tema') || params.get('theme');
+      let savedTheme = null;
+      try { savedTheme = localStorage.getItem('balchuna_theme'); } catch (e) {}
+      if (urlTheme === 'dark' || urlTheme === 'light') {
+        setTheme(urlTheme, false);
+      } else if (savedTheme === 'dark' || savedTheme === 'light') {
+        setTheme(savedTheme, false);
+      } else {
+        setTheme('light', false);
+      }
+
+      setLang(params.get('lang') === 'en' ? 'en' : 'pt');
     })();
   </script>
 </body>
