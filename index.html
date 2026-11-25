@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rafael Balchuna — Dados, BI, Automação &amp; Engenharia Web</title>
-  <meta name="description" content="Portfólio técnico de Rafael Balchuna: Análise de Dados, SQL, Python, Power BI, Automação de Processos, APIs REST e Next.js/TypeScript. 950 testes automatizados." />
+  <meta name="description" content="Portfólio técnico de Rafael Balchuna: Análise de Dados, SQL, Python, Power BI, Automação de Processos, APIs REST e Next.js/TypeScript. 959 testes automatizados." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -471,8 +471,8 @@
     <section class="hero">
       <div class="container">
         <div class="eyebrow">
-          <span class="pt">São Paulo/SP · Disponível para Remoto (BR / LatAm) ou Híbrido SP</span>
-          <span class="en">São Paulo, Brazil (UTC-3) · Open to Remote Worldwide / LatAm &amp; Hybrid SP</span>
+          <span class="pt">São Paulo/SP (UTC-3) · Disponível para 100% Remoto (BR / LatAm / Global)</span>
+          <span class="en">São Paulo, Brazil (UTC-3) · Open to 100% Remote Worldwide / LatAm</span>
         </div>
 
         <h1 class="pt">Dados, BI e Automação com <span>qualidade auditada por código</span>.</h1>
@@ -510,8 +510,8 @@
           </div>
           <div class="metric-card">
             <div class="metric-val">90% · p97</div>
-            <div class="metric-label pt">Inglês fluente (percentil 97 em avaliação) · Português nativo</div>
-            <div class="metric-label en">Fluent English (97th percentile assessment) · Native Portuguese</div>
+            <div class="metric-label pt">Inglês fluente escrito e falado (percentil 97) · Português nativo</div>
+            <div class="metric-label en">Fluent English — written &amp; spoken (97th percentile) · Native Portuguese</div>
           </div>
         </div>
       </div>
@@ -536,7 +536,7 @@
 
         <div class="grid">
           <!-- 1. Painel E-Commerce & Macroeconomia Brasil -->
-          <article class="card" data-cats="dados web">
+          <article id="ecommerce" class="card" style="scroll-margin-top: 84px;" data-cats="dados web">
             <div class="card-media">
               <img src="assets/img/painel-ecommerce.png" alt="Painel E-Commerce &amp; Macroeconomia Brasil — Olist + Banco Central &amp; IBGE" loading="lazy" />
             </div>
@@ -560,56 +560,8 @@
             </div>
           </article>
 
-          <!-- 2. Radar de Vagas -->
-          <article class="card" data-cats="dados automacao">
-            <div class="card-media">
-              <img src="assets/img/radar.png" alt="Radar de Vagas de Dados e TI — painel ao vivo" loading="lazy" />
-            </div>
-            <div class="card-body">
-              <div class="badges">
-                <span class="badge b-green"><span class="pt">Ao vivo · Cron semanal</span><span class="en">Live · Weekly Cron</span></span>
-                <span class="badge b-blue">101 pytest + CI</span>
-                <span class="badge b-indigo"><span class="pt">Dados públicos reais</span><span class="en">Real Public APIs</span></span>
-              </div>
-              <h3><span class="pt">Radar de Vagas de Dados e TI</span><span class="en">Tech &amp; Data Job Market Radar</span></h3>
-              <p class="pt">Coletor semanal via GitHub Actions consultando APIs públicas (Greenhouse, Lever e Ashby; 31 empresas, ToS e limite de 1 req/s verificados) com UPSERT idempotente em SQLite, 65 skills auditadas, análises em SQL e página Chart.js.</p>
-              <p class="en">Weekly GitHub Actions collector querying public Greenhouse, Lever, and Ashby APIs (31 companies, ToS &amp; 1 req/s verified) with idempotent SQLite UPSERTs, 65 audited skills, pure SQL analytics, and Chart.js reporting.</p>
-              <div class="card-proof">16/11/2026: 1.478 vagas ativas BR/LatAm · 91 dados (Python 78,0%, SQL 76,9%)</div>
-              <div class="tags">
-                <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">SQLite</span><span class="tag">GitHub Actions</span><span class="tag">Chart.js</span>
-              </div>
-              <div class="card-actions">
-                <a class="link-pill" href="https://balchuna.github.io/radar-vagas-dados/" target="_blank" rel="noopener"><span class="pt">Abrir painel ao vivo ↗</span><span class="en">Open live dashboard ↗</span></a>
-                <a class="link-pill" href="https://github.com/Balchuna/radar-vagas-dados" target="_blank" rel="noopener">GitHub ↗</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 2. Painel SST -->
-          <article class="card" data-cats="dados">
-            <div class="card-media">
-              <img src="assets/img/painel-sst.png" alt="Painel de Certificações SST em Power BI" loading="lazy" />
-            </div>
-            <div class="card-body">
-              <div class="badges">
-                <span class="badge b-blue">297 pytest + CI</span>
-                <span class="badge b-amber"><span class="pt">Dados sintéticos</span><span class="en">Synthetic Dataset</span></span>
-              </div>
-              <h3><span class="pt">Painel de Certificações SST — Power BI + Gabarito SQL</span><span class="en">OHS Certifications Dashboard — Power BI Verified by SQL</span></h3>
-              <p class="pt">Dashboard Power BI (PBIP gerado por script Python) de 4 páginas sobre obra fictícia de 150 funcionários: limpeza no Power Query, modelo estrela (7 relações) e 27 medidas DAX. Testes abrem Excel e Power BI Desktop e exigem exatidão contra SQLite e pandas.</p>
-              <p class="en">4-page Power BI report (script-generated PBIP) for a synthetic 150-worker construction site: Power Query ETL, star schema (7 relationships), and 27 DAX measures. Automated tests open Excel &amp; Power BI Desktop to cross-check every metric against SQLite and pandas.</p>
-              <div class="card-proof">138 ativos · 63 irregulares · 86,4% conformidade · agenda 30/60/90 dias</div>
-              <div class="tags">
-                <span class="tag">Power BI</span><span class="tag">Power Query</span><span class="tag">DAX</span><span class="tag">SQLite</span><span class="tag">Python</span>
-              </div>
-              <div class="card-actions">
-                <a class="link-pill" href="https://github.com/Balchuna/painel-certificacoes-sst" target="_blank" rel="noopener">GitHub &amp; PDF do painel ↗</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 3. IDEA Central -->
-          <article class="card" data-cats="dados automacao">
+          <!-- 2. IDEA Central -->
+          <article id="idea-sst" class="card" style="scroll-margin-top: 84px;" data-cats="dados automacao">
             <div class="card-media">
               <div class="card-media-placeholder">
                 <div class="arch-flow">
@@ -630,9 +582,9 @@
                 <span class="badge b-amber"><span class="pt">Privado (LGPD)</span><span class="en">Private (PII/LGPD)</span></span>
               </div>
               <h3><span class="pt">IDEA Central — Automação Documental &amp; Banco SST</span><span class="en">IDEA Central — Production OHS Automation Platform</span></h3>
-              <p class="pt">Sistema real para construtora que automatiza certificados NR/PEMT, OS e fichas de EPI em lote. Evoluiu de v1 web em Supabase/PostgreSQL (RLS e triggers) para desktop Python/PySide6 + SQLite (10 tabelas), bot Telegram e matriz de conformidade de 145 funcionários.</p>
-              <p class="en">Production platform for a construction client automating NR/PEMT safety certificates, work orders, and PPE forms. Evolved from Supabase/PostgreSQL v1 (RLS &amp; triggers) into a Python/PySide6 + SQLite app (10 tables), Node.js Telegram bot, and 145-worker compliance tracker.</p>
-              <div class="card-proof">100 docs/pessoa em 88 emissões concluídas (1 erro) · 12/172 inconsistências bloqueadas</div>
+              <p class="pt">Sistema real para construtora que automatiza certificados NR/PEMT, OS e fichas de EPI em lote com hash SHA-256 e trilha de auditoria. Evoluiu de v1 web em Supabase/PostgreSQL (RLS e triggers) para desktop Python/PySide6 + SQLite (10 tabelas), bot Telegram e auditoria de 1.417 registros de 145 funcionários.</p>
+              <p class="en">Production platform for a construction client automating NR/PEMT safety certificates, work orders, and PPE forms with SHA-256 hashing and audit trails. Evolved from Supabase/PostgreSQL v1 (RLS &amp; triggers) into a Python/PySide6 + SQLite app (10 tables), Node.js Telegram bot, and 1,417-record audit across 145 workers.</p>
+              <div class="card-proof">100 docs/pessoa em 88 emissões (1 erro) · 145 trabalhadores / 1.417 registros auditados · SHA-256</div>
               <div class="tags">
                 <span class="tag">Python</span><span class="tag">PostgreSQL/Supabase</span><span class="tag">SQLite</span><span class="tag">SQLAlchemy</span><span class="tag">Node.js Bot</span>
               </div>
@@ -643,55 +595,8 @@
             </div>
           </article>
 
-          <!-- 4. Job Stress Scale -->
-          <article class="card" data-cats="dados">
-            <div class="card-media">
-              <img src="assets/img/jss.png" alt="Estresse no Trabalho — Quadrantes de Karasek por setor" loading="lazy" />
-            </div>
-            <div class="card-body">
-              <div class="badges">
-                <span class="badge b-blue">54 pytest + CI</span>
-                <span class="badge b-indigo"><span class="pt">Psicologia + LGPD</span><span class="en">People Analytics + Privacy</span></span>
-                <span class="badge b-amber"><span class="pt">Dados sintéticos</span><span class="en">Synthetic Dataset</span></span>
-              </div>
-              <h3><span class="pt">Estresse no Trabalho por Setor (Job Stress Scale)</span><span class="en">Workplace Stress by Department (Job Stress Scale)</span></h3>
-              <p class="pt">Pipeline analítico unindo Psicologia e estatística (Alves et al., 2004; Aguiar et al., 2010): descarta PII já na leitura, aplica k-anonimato (k≥5 por setor), calcula quadrantes de Karasek (26% em alta exigência), alfa de Cronbach (0,80–0,87), Mann-Whitney e gera relatório HTML.</p>
-              <p class="en">People Analytics pipeline combining Psychology and statistics: strips PII on read, enforces k≥5 department grouping, scores reversed items, computes Karasek quadrants (26% high strain), Cronbach's alpha (0.80–0.87), Mann-Whitney U with effect size, and HTML reports.</p>
-              <div class="card-proof">130 respondentes · 2 unidades · Cronbach 0,80–0,87 · Mann-Whitney p=0,0002 (r=0,39)</div>
-              <div class="tags">
-                <span class="tag">Python</span><span class="tag">pandas</span><span class="tag">SciPy</span><span class="tag">LGPD / k≥5</span><span class="tag">HTML Report</span>
-              </div>
-              <div class="card-actions">
-                <a class="link-pill" href="https://github.com/Balchuna/estresse-trabalho-jss" target="_blank" rel="noopener">GitHub ↗</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 5. Eva Flights -->
-          <article class="card" data-cats="automacao web">
-            <div class="card-media">
-              <img src="assets/img/eva.png" alt="Eva Flights — agregador multiprovedor de passagens aéreas" loading="lazy" />
-            </div>
-            <div class="card-body">
-              <div class="badges">
-                <span class="badge b-blue">118 node:test + CI</span>
-                <span class="badge b-green"><span class="pt">Modo demo sem chaves</span><span class="en">Zero-Key Demo Mode</span></span>
-              </div>
-              <h3><span class="pt">Eva Flights — Integração Multiprovedor de APIs</span><span class="en">Eva Flights — Multi-Provider Fare Aggregator</span></h3>
-              <p class="pt">App Full Stack (Node.js/Express + React/Vite) unificando 4 fontes de passagens com normalizadores testados por provedor, trava prévia de quota mensal (100 chamadas), timeout de 12s com degradação graciosa e deduplicação de ofertas.</p>
-              <p class="en">Full-stack Node.js/Express + React/Vite fare aggregator unifying 4 flight sources with tested per-provider normalizers, pre-request monthly quota locks (100 calls/mo), 12s timeouts with graceful fallbacks, and offer deduplication.</p>
-              <div class="card-proof">4 provedores · trava 100 chamadas/mês · CI Ubuntu (Node 20/22/24) + Windows</div>
-              <div class="tags">
-                <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">React</span><span class="tag">REST APIs</span><span class="tag">node:test</span>
-              </div>
-              <div class="card-actions">
-                <a class="link-pill" href="https://github.com/Balchuna/eva-flights" target="_blank" rel="noopener">GitHub ↗</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 6. Dungeon-Alchemist MCP -->
-          <article class="card" data-cats="automacao">
+          <!-- 3. Dungeon-Alchemist MCP -->
+          <article id="dungeon-alchemist-mcp" class="card" style="scroll-margin-top: 84px;" data-cats="automacao">
             <div class="card-media">
               <div class="card-media-placeholder">
                 <div class="arch-flow">
@@ -723,7 +628,102 @@
             </div>
           </article>
 
-          <!-- 7. Hope Alívios Terapêuticos -->
+          <!-- 4. Radar de Vagas -->
+          <article class="card" data-cats="dados automacao">
+            <div class="card-media">
+              <img src="assets/img/radar.png" alt="Radar de Vagas de Dados e TI — painel ao vivo" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <div class="badges">
+                <span class="badge b-green"><span class="pt">Ao vivo · Cron semanal</span><span class="en">Live · Weekly Cron</span></span>
+                <span class="badge b-blue">101 pytest + CI</span>
+                <span class="badge b-indigo"><span class="pt">Dados públicos reais</span><span class="en">Real Public APIs</span></span>
+              </div>
+              <h3><span class="pt">Radar de Vagas de Dados e TI</span><span class="en">Tech &amp; Data Job Market Radar</span></h3>
+              <p class="pt">Coletor semanal via GitHub Actions consultando APIs públicas (Greenhouse, Lever e Ashby; 31 empresas, ToS e limite de 1 req/s verificados) com UPSERT idempotente em SQLite, 65 skills auditadas, análises em SQL e página Chart.js.</p>
+              <p class="en">Weekly GitHub Actions collector querying public Greenhouse, Lever, and Ashby APIs (31 companies, ToS &amp; 1 req/s verified) with idempotent SQLite UPSERTs, 65 audited skills, pure SQL analytics, and Chart.js reporting.</p>
+              <div class="card-proof">16/11/2026: 1.478 vagas ativas BR/LatAm · 91 dados (Python 78,0%, SQL 76,9%)</div>
+              <div class="tags">
+                <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">SQLite</span><span class="tag">GitHub Actions</span><span class="tag">Chart.js</span>
+              </div>
+              <div class="card-actions">
+                <a class="link-pill" href="https://balchuna.github.io/radar-vagas-dados/" target="_blank" rel="noopener"><span class="pt">Abrir painel ao vivo ↗</span><span class="en">Open live dashboard ↗</span></a>
+                <a class="link-pill" href="https://github.com/Balchuna/radar-vagas-dados" target="_blank" rel="noopener">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Painel SST -->
+          <article class="card" data-cats="dados">
+            <div class="card-media">
+              <img src="assets/img/painel-sst.png" alt="Painel de Certificações SST em Power BI" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <div class="badges">
+                <span class="badge b-blue">297 pytest + CI</span>
+                <span class="badge b-amber"><span class="pt">Dados sintéticos</span><span class="en">Synthetic Dataset</span></span>
+              </div>
+              <h3><span class="pt">Painel de Certificações SST — Power BI + Gabarito SQL</span><span class="en">OHS Certifications Dashboard — Power BI Verified by SQL</span></h3>
+              <p class="pt">Dashboard Power BI (PBIP gerado por script Python) de 4 páginas sobre obra fictícia de 150 funcionários: limpeza no Power Query, modelo estrela (7 relações) e 27 medidas DAX. Testes abrem Excel e Power BI Desktop e exigem exatidão contra SQLite e pandas.</p>
+              <p class="en">4-page Power BI report (script-generated PBIP) for a synthetic 150-worker construction site: Power Query ETL, star schema (7 relationships), and 27 DAX measures. Automated tests open Excel &amp; Power BI Desktop to cross-check every metric against SQLite and pandas.</p>
+              <div class="card-proof">138 ativos · 63 irregulares · 86,4% conformidade · agenda 30/60/90 dias</div>
+              <div class="tags">
+                <span class="tag">Power BI</span><span class="tag">Power Query</span><span class="tag">DAX</span><span class="tag">SQLite</span><span class="tag">Python</span>
+              </div>
+              <div class="card-actions">
+                <a class="link-pill" href="https://github.com/Balchuna/painel-certificacoes-sst" target="_blank" rel="noopener">GitHub &amp; PDF do painel ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. Job Stress Scale -->
+          <article class="card" data-cats="dados">
+            <div class="card-media">
+              <img src="assets/img/jss.png" alt="Estresse no Trabalho — Quadrantes de Karasek por setor" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <div class="badges">
+                <span class="badge b-blue">54 pytest + CI</span>
+                <span class="badge b-indigo"><span class="pt">Psicologia + LGPD</span><span class="en">People Analytics + Privacy</span></span>
+                <span class="badge b-amber"><span class="pt">Dados sintéticos</span><span class="en">Synthetic Dataset</span></span>
+              </div>
+              <h3><span class="pt">Estresse no Trabalho por Setor (Job Stress Scale)</span><span class="en">Workplace Stress by Department (Job Stress Scale)</span></h3>
+              <p class="pt">Pipeline analítico unindo Psicologia e estatística (Alves et al., 2004; Aguiar et al., 2010): descarta PII já na leitura, aplica k-anonimato (k≥5 por setor), calcula quadrantes de Karasek (26% em alta exigência), alfa de Cronbach (0,80–0,87), Mann-Whitney e gera relatório HTML.</p>
+              <p class="en">People Analytics pipeline combining Psychology and statistics: strips PII on read, enforces k≥5 department grouping, scores reversed items, computes Karasek quadrants (26% high strain), Cronbach's alpha (0.80–0.87), Mann-Whitney U with effect size, and HTML reports.</p>
+              <div class="card-proof">130 respondentes · 2 unidades · Cronbach 0,80–0,87 · Mann-Whitney p=0,0002 (r=0,39)</div>
+              <div class="tags">
+                <span class="tag">Python</span><span class="tag">pandas</span><span class="tag">SciPy</span><span class="tag">LGPD / k≥5</span><span class="tag">HTML Report</span>
+              </div>
+              <div class="card-actions">
+                <a class="link-pill" href="https://github.com/Balchuna/estresse-trabalho-jss" target="_blank" rel="noopener">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. Eva Flights -->
+          <article class="card" data-cats="automacao web">
+            <div class="card-media">
+              <img src="assets/img/eva.png" alt="Eva Flights — agregador multiprovedor de passagens aéreas" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <div class="badges">
+                <span class="badge b-blue">118 node:test + CI</span>
+                <span class="badge b-green"><span class="pt">Modo demo sem chaves</span><span class="en">Zero-Key Demo Mode</span></span>
+              </div>
+              <h3><span class="pt">Eva Flights — Integração Multiprovedor de APIs</span><span class="en">Eva Flights — Multi-Provider Fare Aggregator</span></h3>
+              <p class="pt">App Full Stack (Node.js/Express + React/Vite) unificando 4 fontes de passagens com normalizadores testados por provedor, trava prévia de quota mensal (100 chamadas), timeout de 12s com degradação graciosa e deduplicação de ofertas.</p>
+              <p class="en">Full-stack Node.js/Express + React/Vite fare aggregator unifying 4 flight sources with tested per-provider normalizers, pre-request monthly quota locks (100 calls/mo), 12s timeouts with graceful fallbacks, and offer deduplication.</p>
+              <div class="card-proof">4 provedores · trava 100 chamadas/mês · CI Ubuntu (Node 20/22/24) + Windows</div>
+              <div class="tags">
+                <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">React</span><span class="tag">REST APIs</span><span class="tag">node:test</span>
+              </div>
+              <div class="card-actions">
+                <a class="link-pill" href="https://github.com/Balchuna/eva-flights" target="_blank" rel="noopener">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8. Hope Alívios Terapêuticos -->
           <article class="card" data-cats="web">
             <div class="card-media">
               <img src="assets/img/hope.jpg" alt="Hope Alívios Terapêuticos — site institucional em produção" loading="lazy" />
@@ -746,7 +746,7 @@
             </div>
           </article>
 
-          <!-- 8. Wilton Alves BJJ -->
+          <!-- 9. Wilton Alves BJJ -->
           <article class="card" data-cats="web">
             <div class="card-media">
               <img src="assets/img/wilton.png" alt="Wilton Alves Jiu-Jitsu — landing page bilíngue" loading="lazy" />
@@ -756,8 +756,8 @@
                 <span class="badge b-green"><span class="pt">Ao vivo · Bilíngue PT/EN</span><span class="en">Live · Bilingual PT/EN</span></span>
               </div>
               <h3><span class="pt">Wilton Alves Jiu-Jitsu — Landing Page Bilíngue</span><span class="en">Wilton Alves BJJ — Bilingual Landing Page</span></h3>
-              <p class="pt">Landing page one-page responsiva e bilíngue (PT/EN) mobile-first, construída para marca pessoal de professor faixa-preta com foco em storytelling visual e conversão direta via WhatsApp e Instagram.</p>
-              <p class="en">Mobile-first bilingual (PT/EN) personal-brand landing page for a Jiu-Jitsu black belt instructor focused on visual storytelling and direct WhatsApp/Instagram lead conversion.</p>
+              <p class="pt">Landing page one-page responsiva e bilíngue (PT/EN) mobile-first, construída para marca pessoal de professor faixa-preta com foco em identidade visual e conversão direta via WhatsApp e Instagram.</p>
+              <p class="en">Mobile-first bilingual (PT/EN) personal-brand landing page for a Jiu-Jitsu black belt instructor focused on visual identity and direct WhatsApp/Instagram lead conversion.</p>
               <div class="card-proof">Mobile-first · alternância PT/EN · carregamento instantâneo</div>
               <div class="tags">
                 <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">UI Design</span><span class="tag">Bilíngue</span>
